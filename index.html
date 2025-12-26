@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Build your own funding agency. Join the top partner programs and earn high commissions helping businesses get capital.">
+    <title>Moonshine Capital | Become a Funding Partner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #161616;
+            --bg-highlight: #1f1f1f;
+            --text-main: #ffffff;
+            --text-muted: #a1a1a1;
+            --accent: #FFD700; /* Electric Gold */
+            --accent-hover: #e5c100;
+            --border: #333333;
+            --font-stack: 'Inter', sans-serif;
+            --spacing-section: 4rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-stack);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- Utilities --- */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .narrow-container { max-width: 800px; }
+
+        .text-accent { color: var(--accent); }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* --- Buttons --- */
+        .btn-primary, .btn-secondary, .btn-outline, .btn-sm {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            font-weight: 700;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            text-align: center;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #000;
+            border: 1px solid var(--accent);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+        }
+        .btn-primary:hover { 
+            background-color: var(--accent-hover); 
+            transform: translateY(-2px); 
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid var(--text-main);
+            color: var(--text-main);
+        }
+        .btn-secondary:hover { background-color: var(--text-main); color: #000; }
+
+        .btn-outline {
+            width: 100%;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+        }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            background: var(--accent);
+            color: #000;
+        }
+
+        /* --- Components --- */
+        .badge {
+            background: #222;
+            color: var(--accent);
+            padding: 0.4rem 1rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            border: 1px solid #333;
+            font-weight: 700;
+        }
+
+        .section { padding: var(--spacing-section) 0; border-bottom: 1px solid #111; }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .section-header h2 { font-size: 2rem; margin-bottom: 0.5rem; font-weight: 800; }
+        .section-header p { color: var(--text-muted); font-size: 1.1rem; }
+
+        /* --- Navbar --- */
+        .navbar {
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 900; font-size: 1.2rem; letter-spacing: -0.5px; color: #fff; text-transform: uppercase; }
+
+        /* --- Hero --- */
+        .hero {
+            padding: 6rem 0 5rem;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 70%);
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+        .hero-sub {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 2.5rem;
+        }
+        .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        /* --- Cards --- */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .card:hover { transform: translateY(-5px); border-color: #555; }
+
+        .benefit-card h3 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .benefit-card p { font-size: 0.95rem; color: var(--text-muted); }
+
+        .partner-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; font-weight: 700; }
+        .partner-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; min-height: 3.5rem; }
+
+        /* --- Featured Partner --- */
+        .featured-partner {
+            background: linear-gradient(145deg, #1f1f1f, #0d0d0d);
+            border: 2px solid var(--accent);
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+        .badge-corner {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--accent);
+            color: #000;
+            padding: 0.5rem 1.5rem;
+            font-weight: 800;
+            font-size: 0.8rem;
+            border-bottom-left-radius: 8px;
+        }
+        .featured-partner h3 { font-size: 2.2rem; margin-bottom: 0.5rem; font-weight: 800; }
+        .partner-desc { max-width: 600px; margin: 0 auto 2rem; color: #ddd; font-size: 1.1rem; }
+        .link-stack { display: flex; flex-direction: column; gap: 1rem; align-items: center; }
+        .full-width { min-width: 300px; }
+        .text-link { font-size: 0.9rem; border-bottom: 1px dotted var(--text-muted); color: var(--text-muted); padding-bottom: 2px; }
+        .text-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+        /* --- Ecosystem List --- */
+        .ecosystem { background: #000; }
+        .eco-content { text-align: center; }
+        .list-group {
+            max-width: 700px;
+            margin: 3rem auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            background: var(--bg-highlight);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s;
+            text-align: left;
+        }
+        .list-item:hover { background: #252525; border-color: var(--accent); transform: translateX(5px); }
+        .arrow { color: var(--accent); }
+
+        /* --- Bio --- */
+        .bio { text-align: center; padding: 6rem 0; background: linear-gradient(to bottom, #0a0a0a, #111); }
+        .bio-text { 
+            font-size: 1.6rem; 
+            font-weight: 600; 
+            color: #fff; 
+            font-style: italic; 
+            opacity: 0.9; 
+            line-height: 1.4;
+        }
+        .bio-attribution { margin-top: 1.5rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- Footer --- */
+        footer { padding: 4rem 0; border-top: 1px solid var(--border); text-align: center; font-size: 0.9rem; color: #555; background: #050505; }
+        .disclaimer { margin-top: 1.5rem; font-size: 0.75rem; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.5; }
+
+        /* --- Mobile Queries --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .btn-group { flex-direction: column; width: 100%; }
+            .btn-primary, .btn-secondary { width: 100%; }
+            .nav-container { flex-direction: column; gap: 1rem; }
+            .list-item { padding: 1.2rem; font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">MOONSHINE CAPITAL</div>
+            <a href="#arsenal" class="btn-sm">Start Earning</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container hero-content">
+            <span class="badge">For Rebels & Hustlers</span>
+            <h1>STOP BEGGING.<br><span class="text-accent">START BROKERING.</span></h1>
+            <p class="hero-sub">Get paid to empower small businesses. Earn high-ticket commissions helping entrepreneurs get funding. No corporate gatekeeping.</p>
+            <div class="btn-group">
+                <a href="#arsenal" class="btn-primary">Get The Partner Links</a>
+                <a href="#ecosystem" class="btn-secondary">Join The Community</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="section benefits" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>The "Agency-in-a-Box" Model</h2>
+                <p>You find the business. Our partners fund the deal. You get the wire.</p>
+            </div>
+            <div class="grid-3">
+                <div class="card benefit-card">
+                    <h3>01. Connect</h3>
+                    <p>Use your referral links to connect business owners with capital. No hard selling required.</p>
+                </div>
+                <div class="card benefit-card">
+                    <h3>02. Fund</h3>
+                    <p>Our partners handle the underwriting, paperwork, and approval. You don't lift a finger.</p>
+                </div>
+                <div class="card benefit-card">
+                    <h3>03. Collect</h3>
+                    <p>When they get funded, you get paid. Commissions range from 4% to 8% per deal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section arsenal" id="arsenal">
+        <div class="container">
+            <div class="section-header">
+                <h2><span class="text-accent">The Arsenal</span> (Partner Programs)</h2>
+                <p>Pick a partner to rep, or stack them all to build a full-service agency.</p>
+            </div>
+
+            <div class="featured-partner">
+                <div class="badge-corner">TOP PICK</div>
+                <h3>David Allen Capital (DAC)</h3>
+                <p class="partner-desc">Build your own funding agency. Earn 4%–8% on personal production + overrides on your team.</p>
+                <div class="link-stack">
+                    <a href="https://bit.ly/DACagency" target="_blank" class="btn-primary full-width">Become an Agent (Instant Signup)</a>
+                    <a href="https://bit.ly/47TX5SO" target="_blank" class="text-link">▶ Watch the 5-Min Walkthrough</a>
+                    <a href="https://bit.ly/DACaffiliate" target="_blank" class="text-link">📘 Opportunity Overview</a>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="card partner-card">
+                    <h3>ROK Financial</h3>
+                    <p>Access 75+ lenders. Fast approvals and massive broker commissions.</p>
+                    <a href="https://bit.ly/rockfi-affiliate" target="_blank" class="btn-outline">Join ROK Financial</a>
+                </div>
+
+                <div class="card partner-card">
+                    <h3>7 Figures Funding</h3>
+                    <p>Become a Credit Stacking Partner. Help entrepreneurs secure $50k-$250k in 0% capital.</p>
+                    <a href="https://bit.ly/3PFLCff" target="_blank" class="btn-outline">Join 7 Figures</a>
+                </div>
+
+                <div class="card partner-card">
+                    <h3>Credit Suite</h3>
+                    <p>Sell Business Credit & Funding as a Service. Recurring revenue + high-ticket upsells.</p>
+                    <a href="https://bit.ly/creditsuiteaffiliate" target="_blank" class="btn-outline">Join Credit Suite</a>
+                </div>
+
+                <div class="card partner-card">
+                    <h3>National Business Capital</h3>
+                    <p>Offer 30+ lending products with white-glove underwriting.</p>
+                    <a href="https://bit.ly/nbcaffiliate" target="_blank" class="btn-outline">Join NBC</a>
+                </div>
+
+                <div class="card partner-card">
+                    <h3>Finance Factory</h3>
+                    <p>Personal + business funding programs with premium payouts.</p>
+                    <a href="https://bit.ly/financefactory-affiliate" target="_blank" class="btn-outline">Join Finance Factory</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section ecosystem" id="ecosystem">
+        <div class="container">
+            <div class="eco-content">
+                <h2>Join The <span class="text-accent">Moonshine</span> Ecosystem</h2>
+                <p>Don't go into battle alone. Get training, tools, automations, and done-for-you resources.</p>
+                
+                <div class="list-group">
+                    <a href="https://www.distilledfunding.com/partners" target="_blank" class="list-item">
+                        <span>🌙 Become a Moonshine Capital Partner</span>
+                        <span class="arrow">→</span>
+                    </a>
+                    <a href="https://www.distilledfunding.com/group/moonshine-moneymakers/" target="_blank" class="list-item">
+                        <span>🔥 Join the Moonshine Moneymakers Community</span>
+                        <span class="arrow">→</span>
+                    </a>
+                    <a href="https://tally.so/r/mOe658" target="_blank" class="list-item">
+                        <span>📝 Apply to Become a Business Funding Broker</span>
+                        <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bio">
+        <div class="container narrow-container">
+            <h2>The Mission</h2>
+            <p class="bio-text">
+                "I turn underdogs into funding assassins — helping you earn life-changing commissions by empowering entrepreneurs instead of begging employers."
+            </p>
+            <div class="bio-attribution">- Moonshine Capital</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2025 Moonshine Capital. All rights reserved.</p>
+            <p class="disclaimer">Earnings Disclaimer: Results may vary. We do not guarantee income. Your results depend on your effort, market conditions, and the specific terms of the partner programs you join. We are an affiliate partner for these programs and may earn a commission if you join through our links.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Smooth Scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Intersection Observer for Fade-in effects
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const animatedElements = document.querySelectorAll('.card, .hero-content, .featured-partner, .list-item');
+            
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
