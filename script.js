@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     /**
      * 1. MOBILE MENU TOGGLE
-     * Handles the transition between hamburger and close icons.
      */
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.querySelector('.nav-links');
@@ -20,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /**
      * 2. ACTIVE STATE HIGHLIGHTING
-     * Automatically underlines the link of the page the user is currently on.
      */
     const currentPath = window.location.pathname;
     document.querySelectorAll('.nav-link').forEach(link => {
@@ -32,12 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /**
      * 3. SMOOTH SCROLLING
-     * Fallback for anchor links to ensure consistent behavior across browsers.
      */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
-            if (targetId === '#') return; // Skip empty anchors
+            if (targetId === '#') return; 
 
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
@@ -49,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /**
      * 4. INTERSECTION OBSERVER (FADE-IN REVEAL)
-     * Detects when elements enter the viewport and triggers the animation.
      */
     const observerOptions = { threshold: 0.15 };
 
@@ -62,11 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Optimized selector: catches all main card and content types
     const revealElements = document.querySelectorAll('.card, .hero-content, .featured-partner, .list-item, .product-card, .stack-item');
     
     revealElements.forEach(el => {
-        el.classList.add('reveal-hidden'); // Initialize state
+        el.classList.add('reveal-hidden'); 
         revealObserver.observe(el);
     });
 });
