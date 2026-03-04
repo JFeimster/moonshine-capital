@@ -2,84 +2,245 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Moonshine OS | The all-in-one operating system and community for business funding brokers.">
     <title>Moonshine OS | The Operating System for Brokers</title>
+    
     <link rel="stylesheet" href="../styles.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* Specific Styles for Moonshine OS Page */
+        .os-hero {
+            padding: 6rem 0 4rem; text-align: center;
+            background: radial-gradient(circle at top, #1a1a1a 0%, #050505 80%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .video-placeholder {
+            width: 100%; max-width: 800px; height: 450px;
+            margin: 3rem auto 0; background: #0a0a0a;
+            border: 2px solid #333; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            position: relative; overflow: hidden;
+        }
+
+        .play-btn {
+            width: 80px; height: 80px; background: var(--accent);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: #000; font-size: 2rem; cursor: pointer; transition: transform 0.2s;
+        }
+        .play-btn:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(255, 215, 0, 0.5); }
+
+        .stack-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem; margin-top: 3rem;
+        }
+
+        .stack-item {
+            background: #111; border: 1px solid #222; padding: 2.5rem; border-radius: 8px;
+            transition: border-color 0.3s ease;
+        }
+        .stack-item:hover { border-color: var(--accent); }
+        .stack-icon { font-size: 2.5rem; margin-bottom: 1rem; color: var(--accent); }
+
         .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
         .price-card { background: #111; border: 1px solid #333; padding: 2.5rem; border-radius: 8px; position: relative; display: flex; flex-direction: column; }
         .price-card.popular { border-color: var(--accent); background: #161616; transform: scale(1.05); z-index: 10; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
-        .price { font-size: 3rem; font-weight: 800; color: #fff; margin: 1rem 0; }
-        .price span { font-size: 1rem; color: #888; font-weight: 400; }
+        .price { font-size: 3.5rem; font-weight: 900; color: #fff; margin: 1rem 0; line-height: 1; }
+        .price span { font-size: 1.2rem; color: #888; font-weight: 600; }
+        
         .features-list { margin: 2rem 0; flex-grow: 1; }
-        .features-list li { margin-bottom: 1rem; display: flex; align-items: center; color: #ccc; }
-        .check { color: var(--accent); margin-right: 10px; font-weight: bold; }
-        .badge-pop { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #000; padding: 0.3rem 1rem; font-weight: bold; text-transform: uppercase; border-radius: 20px; font-size: 0.8rem; }
+        .features-list li { margin-bottom: 1rem; display: flex; align-items: flex-start; color: #ccc; font-size: 0.95rem; line-height: 1.4; }
+        .check { color: var(--accent); margin-right: 12px; font-weight: bold; font-size: 1.1rem; }
+        
+        .badge-pop { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #000; padding: 0.4rem 1.2rem; font-weight: 800; text-transform: uppercase; border-radius: 20px; font-size: 0.8rem; letter-spacing: 1px; }
+
+        /* FAQ Accordion */
+        .faq-container { max-width: 800px; margin: 3rem auto 0; }
+        details { background: #111; border: 1px solid #333; margin-bottom: 1rem; border-radius: 6px; overflow: hidden; }
+        summary { padding: 1.5rem; font-weight: 600; cursor: pointer; color: #fff; position: relative; list-style: none; font-size: 1.1rem; outline: none; }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '+'; position: absolute; right: 1.5rem; color: var(--accent); font-size: 1.5rem; font-weight: bold; top: 50%; transform: translateY(-50%); }
+        details[open] summary::after { content: '-'; }
+        .faq-content { padding: 0 1.5rem 1.5rem; color: #aaa; line-height: 1.6; }
+
+        @media (max-width: 768px) {
+            .price-card.popular { transform: none; margin-top: 2rem; margin-bottom: 2rem; }
+            .video-placeholder { height: 250px; }
+        }
     </style>
 </head>
 <body>
+
     <nav class="navbar">
-        <div class="container nav-container">
-            <div class="logo">MOONSHINE <span class="text-accent">OS</span></div>
-            <a href="../index.html" class="btn-sm">Back to HQ</a>
+        <div class="container nav-inner" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="nav-logo" style="font-weight: 900; font-size: 1.2rem; color: #fff; letter-spacing: -0.5px;">MOONSHINE <span class="text-accent" style="color: #FFD700;">OS</span></div>
+            <a href="../index.html" class="btn-sm" style="background: transparent; border: 1px solid #fff; color: #fff; padding: 0.5rem 1rem; border-radius: 4px; font-weight: 600;">← Back to HQ</a>
         </div>
     </nav>
 
-    <header class="hero" style="padding: 5rem 0 2rem;">
+    <header class="os-hero">
         <div class="container">
-            <h1>THE BROKER <span class="text-accent">OPERATING SYSTEM</span></h1>
-            <p class="hero-sub">The exact tech stack, automations, and data feeds I use to run a 7-figure agency. Plug and play.</p>
+            <span class="badge" style="background: #222; color: #FFD700; padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; letter-spacing: 1.5px; margin-bottom: 1.5rem; display: inline-block;">SaaS + Community Membership</span>
+            <h1 style="font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">DON'T BUILD IT.<br><span class="text-accent" style="color: #FFD700;">RENT MY BRAIN.</span></h1>
+            <p style="color: #aaa; font-size: 1.2rem; max-width: 700px; margin: 0 auto;">Stop duct-taping your business together. Get the exact GoHighLevel snapshot, the verified lead drops, and the live deal-desk coaching we use to run a 7-figure funding agency.</p>
+            
+            <div class="video-placeholder">
+                <div style="position: absolute; top: 20px; left: 20px; font-family: monospace; color: #555;">VSL_MAIN_COMP.mp4</div>
+                <div class="play-btn">▶</div>
+            </div>
         </div>
     </header>
 
     <section class="section">
         <div class="container">
-            <div style="text-align: center; margin-bottom: 2rem; color: #888;">
-                <span style="color: #fff;">Monthly</span> / Annual (Save 20%)
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem;">What's Inside The Box?</h2>
+                <p style="color: #888; font-size: 1.1rem;">Everything you need to launch, scale, and automate. Zero fluff.</p>
             </div>
-
-            <div class="pricing-grid">
-                <div class="price-card">
-                    <h3>The Scout</h3>
-                    <p class="text-muted">For side-hustlers just starting.</p>
-                    <div class="price">$47<span>/mo</span></div>
-                    <ul class="features-list">
-                        <li><span class="check">✓</span> The "Moonshine" Notion Dashboard</li>
-                        <li><span class="check">✓</span> 50 Verified Leads / Month</li>
-                        <li><span class="check">✓</span> Contract Templates</li>
-                        <li><span class="check">✓</span> Community Access</li>
-                    </ul>
-                    <a href="#" class="btn-outline">Start Trial</a>
+            
+            
+            
+            <div class="stack-grid">
+                <div class="stack-item">
+                    <div class="stack-icon">⚙️</div>
+                    <h3 style="color: #fff; margin-bottom: 0.5rem;">The Automation Engine</h3>
+                    <p style="color: #aaa; font-size: 0.95rem;">Our proprietary GoHighLevel snapshot. Instantly install our pre-written SMS drips, email sequences, and pipeline stages. Done in 1 click.</p>
                 </div>
-
-                <div class="price-card popular">
-                    <div class="badge-pop">Most Popular</div>
-                    <h3>The Rainmaker</h3>
-                    <p class="text-muted">For agents scaling to $10k/mo.</p>
-                    <div class="price">$97<span>/mo</span></div>
-                    <ul class="features-list">
-                        <li><span class="check">✓</span> <strong>Everything in Scout</strong></li>
-                        <li><span class="check">✓</span> GHL Snapshot (One-Click Install)</li>
-                        <li><span class="check">✓</span> 200 Verified Leads / Month</li>
-                        <li><span class="check">✓</span> Weekly "Deal Desk" Calls</li>
-                        <li><span class="check">✓</span> White-Label Marketing Assets</li>
-                    </ul>
-                    <a href="#" class="btn-primary">Get Access</a>
+                <div class="stack-item">
+                    <div class="stack-icon">🎯</div>
+                    <h3 style="color: #fff; margin-bottom: 0.5rem;">Verified Lead Drops</h3>
+                    <p style="color: #aaa; font-size: 0.95rem;">Every month, we drop fresh, verified business leads (B2B contacts with revenue data) directly into your dashboard. Stop starving for deals.</p>
                 </div>
-
-                <div class="price-card">
-                    <h3>The Whitelabel</h3>
-                    <p class="text-muted">We process your files for you.</p>
-                    <div class="price">$297<span>/mo</span></div>
-                    <ul class="features-list">
-                        <li><span class="check">✓</span> <strong>Everything in Rainmaker</strong></li>
-                        <li><span class="check">✓</span> Dedicated Processing Team</li>
-                        <li><span class="check">✓</span> Custom Domain Setup</li>
-                        <li><span class="check">✓</span> 1-on-1 Strategy Call</li>
-                    </ul>
-                    <a href="#" class="btn-outline">Apply Now</a>
+                <div class="stack-item">
+                    <div class="stack-icon">📞</div>
+                    <h3 style="color: #fff; margin-bottom: 0.5rem;">Weekly Deal Desk</h3>
+                    <p style="color: #aaa; font-size: 0.95rem;">Join us live twice a week. Screen-share your tough files, and we will tell you exactly which lender will approve it and how to pitch it.</p>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon">📄</div>
+                    <h3 style="color: #fff; margin-bottom: 0.5rem;">White-Label Assets</h3>
+                    <p style="color: #aaa; font-size: 0.95rem;">Weekly drops of vertical video scripts, LinkedIn posts, and graphics. Just slap your logo on them and dominate your local market.</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <section class="section" id="pricing" style="background: #0a0a0a;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2>Choose Your Arsenal</h2>
+                <p style="color: #888; margin-bottom: 2rem;">No long-term contracts. Cancel anytime.</p>
+                <div style="display: inline-block; background: #111; padding: 0.5rem; border-radius: 50px; border: 1px solid #333;">
+                    <span style="background: var(--accent); color: #000; padding: 0.4rem 1rem; border-radius: 50px; font-weight: bold; font-size: 0.9rem;">Monthly</span>
+                    <span style="color: #888; padding: 0.4rem 1rem; font-weight: bold; font-size: 0.9rem; cursor: pointer;">Annual (Save 20%)</span>
+                </div>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3 style="font-size: 1.5rem; color: #fff;">The Scout</h3>
+                    <p class="text-muted">For side-hustlers just getting their feet wet.</p>
+                    <div class="price">$47<span>/mo</span></div>
+                    <ul class="features-list">
+                        <li><span class="check">✓</span> The "Moonshine" Notion Dashboard</li>
+                        <li><span class="check">✓</span> <strong>50 Verified Leads / Month</strong></li>
+                        <li><span class="check">✓</span> Master Contract Templates</li>
+                        <li><span class="check">✓</span> Private Discord Community Access</li>
+                        <li style="opacity: 0.3;"><span class="check" style="color:#555">✗</span> GHL Automation Snapshot</li>
+                        <li style="opacity: 0.3;"><span class="check" style="color:#555">✗</span> Live Deal Desk Calls</li>
+                    </ul>
+                    <a href="#" class="btn-outline" style="border: 1px solid #444; color: #fff; padding: 1rem; font-weight: 700; border-radius: 4px; text-transform: uppercase; text-align: center;">Start 7-Day Trial</a>
+                </div>
+
+                <div class="price-card popular">
+                    <div class="badge-pop">Most Popular</div>
+                    <h3 style="font-size: 1.5rem; color: #fff;">The Rainmaker</h3>
+                    <p class="text-muted">For serious agents scaling to $10k+/mo.</p>
+                    <div class="price">$97<span>/mo</span></div>
+                    <ul class="features-list">
+                        <li><span class="check">✓</span> <strong>Everything in Scout, plus:</strong></li>
+                        <li><span class="check">✓</span> <strong>One-Click GHL Snapshot</strong> (CRM)</li>
+                        <li><span class="check">✓</span> <strong>200 Verified Leads / Month</strong></li>
+                        <li><span class="check">✓</span> Weekly "Deal Desk" Zoom Calls</li>
+                        <li><span class="check">✓</span> Done-For-You Marketing Assets</li>
+                        <li><span class="check">✓</span> Objection Handling Script Vault</li>
+                    </ul>
+                    <a href="#" class="btn-primary" style="background: #FFD700; color: #000; padding: 1rem; font-weight: 800; border-radius: 4px; text-transform: uppercase; text-align: center;">Get Access Now</a>
+                </div>
+
+                <div class="price-card">
+                    <h3 style="font-size: 1.5rem; color: #fff;">The Syndicate</h3>
+                    <p class="text-muted">We process your files. You just sell.</p>
+                    <div class="price">$297<span>/mo</span></div>
+                    <ul class="features-list">
+                        <li><span class="check">✓</span> <strong>Everything in Rainmaker</strong></li>
+                        <li><span class="check">✓</span> <strong>Dedicated Processing Team</strong></li>
+                        <li><span class="check">✓</span> Custom Domain & Email Setup</li>
+                        <li><span class="check">✓</span> 1-on-1 Monthly Strategy Call</li>
+                        <li><span class="check">✓</span> Sub-Agent Recruitment Funnel</li>
+                    </ul>
+                    <a href="#" class="btn-outline" style="border: 1px solid #444; color: #fff; padding: 1rem; font-weight: 700; border-radius: 4px; text-transform: uppercase; text-align: center;">Apply For Access</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2>Briefing / FAQ</h2>
+                <p style="color: #888;">Clear answers. No corporate BS.</p>
+            </div>
+
+            <div class="faq-container">
+                <details>
+                    <summary>Do I need to pay for GoHighLevel separately?</summary>
+                    <div class="faq-content">
+                        If you want to use the CRM features in the Rainmaker tier, yes. You will need your own GHL account to import our Snapshot. We provide the architecture; you provide the software engine. If you don't have GHL, you can still use the Scout tier which runs on Notion.
+                    </div>
+                </details>
+                <details>
+                    <summary>Where do the monthly leads come from?</summary>
+                    <div class="faq-content">
+                        We buy bulk data from enterprise providers (Apollo, ZoomInfo, etc.) and filter them specifically for businesses doing over $250k/year in revenue across high-approval industries (Construction, Medical, Transport). We drop clean CSVs into the portal on the 1st of every month.
+                    </div>
+                </details>
+                <details>
+                    <summary>Am I locked into a contract?</summary>
+                    <div class="faq-content">
+                        No. Moonshine OS is month-to-month. If you decide to leave, you keep the CRM snapshot and any leads you've already downloaded. You just lose access to the weekly coaching, new lead drops, and community.
+                    </div>
+                </details>
+                <details>
+                    <summary>I'm brand new. Is this too advanced for me?</summary>
+                    <div class="faq-content">
+                        No. The "Scout" tier is built specifically for day-one beginners. It gives you the foundational tools and the exact path to your first commission check without drowning you in complicated software.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--accent); padding: 4rem 0; text-align: center;">
+        <div class="container">
+            <h2 style="color: #000; font-size: 2.5rem; margin-bottom: 1rem;">Stop Losing Deals to Bad Underwriting.</h2>
+            <p style="color: #222; font-size: 1.2rem; font-weight: 600; margin-bottom: 2rem;">Join the OS today. Your first Deal Desk call is this Thursday.</p>
+            <a href="#pricing" class="btn" style="background: #000; color: var(--accent); font-size: 1.1rem; padding: 1.2rem 3rem;">CHOOSE YOUR PLAN</a>
+        </div>
+    </section>
+
+    <footer style="background: #020202; border-top: 1px solid #222; padding: 3rem 0; font-size: 0.9rem; color: #555; text-align: center;">
+        <div class="container">
+            <p>&copy; 2025 Moonshine Capital OS. All rights reserved.</p>
+            <p style="margin-top: 1rem; font-size: 0.8rem;">Earnings Disclaimer: We do not guarantee income. The tools provided require actual work, sales acumen, and market execution.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
