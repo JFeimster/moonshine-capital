@@ -2,61 +2,170 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Article Title | Moonshine Capital</title>
-    <link rel="stylesheet" href="../../styles.css"> <style>
-        .article-body { max-width: 700px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8; color: #ccc; }
-        .article-body h2 { color: #fff; margin-top: 2.5rem; margin-bottom: 1rem; font-size: 1.8rem; }
-        .article-body ul { list-style: disc; margin-left: 1.5rem; margin-bottom: 1.5rem; }
-        .callout { background: #1a1a1a; border-left: 4px solid var(--accent); padding: 1.5rem; margin: 2rem 0; font-style: italic; color: #fff; }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Death of the Local Bank | Moonshine Intel</title>
+    <link rel="stylesheet" href="../../styles.css"> 
+    <style>
+        .article-container { max-width: 750px; margin: 4rem auto; padding: 0 1.5rem; }
+        .article-body { font-size: 1.15rem; line-height: 1.9; color: #ccc; }
+        .article-body h2 { color: #fff; margin-top: 3rem; margin-bottom: 1.2rem; font-size: 2rem; font-weight: 800; }
+        .article-body p { margin-bottom: 1.5rem; }
+        
+        /* The Lead Magnet Box */
+        .lead-magnet-box { 
+            background: linear-gradient(145deg, #111, #0a0a0a);
+            border: 1px solid var(--accent);
+            padding: 2.5rem;
+            border-radius: 8px;
+            margin: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .lead-magnet-box::before {
+            content: 'INTEL DROP';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-family: monospace;
+            font-size: 0.65rem;
+            color: var(--accent);
+            opacity: 0.5;
+        }
+        .lead-magnet-box h3 { font-size: 1.6rem; margin-bottom: 1rem; color: #fff; }
+        .lead-form { display: flex; gap: 10px; margin-top: 1.5rem; flex-wrap: wrap; }
+        .lead-input { 
+            flex: 1; 
+            min-width: 250px; 
+            padding: 1rem; 
+            background: #000; 
+            border: 1px solid #333; 
+            color: #fff; 
+            border-radius: 4px;
+            outline: none;
+        }
+        .lead-input:focus { border-color: var(--accent); }
+
+        .author-card {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 2rem 0;
+            border-top: 1px solid #222;
+            margin-top: 4rem;
+        }
+        .author-img { width: 60px; height: 60px; background: #333; border-radius: 50%; }
+        
+        .share-links { display: flex; gap: 1rem; margin-top: 2rem; }
+        .share-btn { font-size: 0.8rem; font-weight: 700; color: #555; text-transform: uppercase; }
+        .share-btn:hover { color: var(--accent); }
     </style>
 </head>
 <body>
+
     <nav class="navbar">
         <div class="container nav-inner">
-            <a href="../../index.html" class="nav-logo">MOONSHINE CAPITAL</a>
+            <a href="../../index.html" class="nav-logo">MOONSHINE <span class="text-accent">INTEL</span></a>
             <div class="nav-links hidden-mobile">
                 <a href="../../index.html#arsenal" class="nav-link">Partners</a>
                 <a href="../../shop/" class="nav-link">Shop</a>
                 <a href="../../membership/" class="nav-link">Membership</a>
-                <a href="../../training/" class="nav-link">Academy</a>
-                <a href="../../content/" class="nav-link">Intel</a>
-                <a href="../../services/agency-setup.html" class="nav-link">DFY</a>
-            </div>
-            <div style="display:flex; gap:1rem; align-items:center;">
-                <a href="../../mastermind/" class="btn btn-primary btn-sm">The War Room</a>
-                <button class="mobile-toggle mobile-only" id="menuToggle">☰</button>
+                <a href="../index.html" class="nav-link" style="color: var(--accent);">← Field Reports</a>
             </div>
         </div>
     </nav>
 
-    <article class="section">
-        <div class="container article-body">
-            <span class="badge">Operations</span>
-            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">The Death of the Local Bank</h1>
-            <p class="text-muted" style="margin-bottom: 2rem;">By Moonshine Capital • December 20, 2025</p>
+    <main class="article-container">
+        <header style="margin-bottom: 3rem;">
+            <span class="badge">Market Operations</span>
+            <h1 style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1.1; margin: 1rem 0;">The Death of the Local Bank</h1>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; padding-bottom: 1.5rem;">
+                <p class="text-muted">By Moonshine Capital • December 20, 2025</p>
+                <div class="share-links">
+                    <a href="#" class="share-btn">Twitter</a>
+                    <a href="#" class="share-btn">LinkedIn</a>
+                </div>
+            </div>
+        </header>
+
+        <section class="article-body">
+            <p>The era of walking into a branch and shaking hands for a loan is over. The algorithms have taken over, and they aren't programmed to see your potential—they are programmed to mitigate risk for shareholders who don't know your name.</p>
             
-            <p>The era of walking into a branch and shaking hands for a loan is over. The algorithms have taken over.</p>
-            
-            <p>For most business owners, this is terrifying. For us, it is the greatest transfer of opportunity in financial history.</p>
+            <p>For most business owners, this is terrifying. For us, it is the greatest transfer of opportunity in financial history. When the "Big Banks" pull back, the private market surges.</p>
 
             <h2>Why The Void Exists</h2>
-            <p>Regional banks are tightening credit boxes due to commercial real estate exposure...</p>
+            <p>Regional banks are tightening credit boxes due to commercial real estate exposure and liquidity concerns. If your business doesn't fit a perfect 800-FICO, 5-year-history, zero-debt profile, you are effectively invisible to them.</p>
 
             <div class="callout">
                 "We don't sell money. We sell speed and certainty."
             </div>
 
+            <div class="lead-magnet-box">
+                <h3>GET THE BANK-DECLINE RECOVERY BLUEPRINT</h3>
+                <p class="text-muted">A tactical guide on where to take a file after a Tier-1 decline. Includes the "Lender Pivot" list.</p>
+                <form class="lead-form">
+                    <input type="email" class="lead-input" placeholder="Enter your business email" required>
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">Send It To Me</button>
+                </form>
+                <p style="font-size: 0.7rem; color: #444; margin-top: 1rem;">Zero spam. Just field intel. Cancel anytime.</p>
+            </div>
+
             <h2>How to Capitalize</h2>
+            <p>To win in this market, you must change your positioning. You aren't a solicitor; you are a liquidity specialist.</p>
             <ul>
-                <li>Target businesses declined by Tier 1 banks.</li>
-                <li>Position private lending as a "Bridge," not a crutch.</li>
+                <li><strong>Target Declines:</strong> Position yourself as the second opinion for every business the local bank says "No" to.</li>
+                <li><strong>The Bridge Strategy:</strong> Position private lending as a "Bridge" to get to the next level, not a permanent crutch.</li>
             </ul>
 
-            <hr style="border-color: #333; margin: 3rem 0;">
+            <p>The capital is there. It’s just not where it used to be. Your job is to be the map.</p>
+        </section>
 
-            <h3>Ready to profit from this shift?</h3>
-            <a href="../../index.html#arsenal" class="btn-primary">Get Your Partner Links</a>
+        <footer class="author-card">
+            <div class="author-img"></div>
+            <div>
+                <h4 style="color: #fff; margin-bottom: 0.3rem;">Moonshine Capital Editorial</h4>
+                <p class="text-muted" style="font-size: 0.9rem;">Turning underdogs into funding assassins. We provide the tools, the tech, and the capital connections to dominate the private lending market.</p>
+            </div>
+        </footer>
+
+        <div style="margin-top: 4rem; text-align: center;">
+            <h3 style="margin-bottom: 1.5rem;">Ready to stop reading and start brokering?</h3>
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <a href="../../index.html#arsenal" class="btn btn-primary">Join The Network</a>
+                <a href="../../training/" class="btn btn-outline">Visit The Academy</a>
+            </div>
         </div>
-    </article>
+    </main>
+
+    <footer class="section" style="background: #020202; border-top: 1px solid #222; padding: 4rem 0;">
+        <div class="container grid-3">
+            <div>
+                <div class="nav-logo" style="margin-bottom: 1rem;">MOONSHINE CAPITAL</div>
+                <p class="text-muted" style="font-size: 0.9rem;">Empowering the next generation of funding assassins. High margin. Low fluff.</p>
+            </div>
+            <div>
+                <h4 class="mono text-accent" style="margin-bottom: 1.5rem;">Infrastructure</h4>
+                <ul style="display: grid; gap: 0.5rem; font-size: 0.9rem;">
+                    <li><a href="../../shop/">The Armory (Shop)</a></li>
+                    <li><a href="../../membership/">The OS (Membership)</a></li>
+                    <li><a href="../../training/">The Academy</a></li>
+                    <li><a href="../index.html">Field Intel</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="mono text-accent" style="margin-bottom: 1.5rem;">Support</h4>
+                <ul style="display: grid; gap: 0.5rem; font-size: 0.9rem;">
+                    <li><a href="../../services/agency-setup.html">DFY Agency Setup</a></li>
+                    <li><a href="../../mastermind/">The War Room</a></li>
+                    <li><a href="../../index.html#arsenal">Partner Program</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container" style="margin-top: 4rem; text-align: center; border-top: 1px solid #111; padding-top: 2rem;">
+            <p class="text-muted" style="font-size: 0.75rem;">© 2026 Moonshine Capital. Field Intel Division.</p>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
 </body>
 </html>
