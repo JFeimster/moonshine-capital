@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapid Launch Protocol | Moonshine Academy</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .lesson-container { display: grid; grid-template-columns: 1fr 350px; gap: 3rem; margin-top: 3rem; }
+        .video-player { background: #000; width: 100%; aspect-ratio: 16/9; border: 1px solid #333; border-radius: 8px; margin-bottom: 2rem; display: flex; align-items: center; justify-content: center; color: #444; }
+        .curriculum-sidebar { background: #111; border: 1px solid #222; border-radius: 8px; padding: 1.5rem; height: fit-content; position: sticky; top: 100px; }
+        .lesson-link { display: flex; align-items: center; gap: 10px; padding: 0.8rem; border-radius: 4px; margin-bottom: 0.5rem; font-size: 0.9rem; color: #888; border: 1px solid transparent; }
+        .lesson-link.active { background: #1a1a1a; color: var(--accent); border-color: #333; }
+        .action-item { background: rgba(255, 215, 0, 0.05); border: 1px dashed var(--accent); padding: 1.5rem; border-radius: 8px; margin-top: 2rem; }
+        @media (max-width: 992px) { .lesson-container { grid-template-columns: 1fr; } .curriculum-sidebar { position: static; } }
+    </style>
+</head>
+<body>
+    <nav class="navbar"><div class="container nav-inner"><a href="../index.html" class="nav-logo">MOONSHINE ACADEMY</a></div></nav>
+
+    <div class="container">
+        <div class="lesson-container">
+            <main>
+                <span class="mono text-accent">Module 1: The Zero-Start Setup</span>
+                <h1 style="margin: 0.5rem 0 2rem;">24-Hour Funding Agency Setup</h1>
+                
+                <div class="video-player">
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem;">▶</div>
+                        <p class="mono">LECTURE_01_SETUP.mp4</p>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <h2>Your Mission</h2>
+                    <p>Stop overthinking. Today we secure your infrastructure. Without a clean domain and a professional presence, lenders won't take you seriously and prospects won't trust you.</p>
+                    
+                    <div class="action-item">
+                        <h4 class="text-accent" style="margin-bottom: 0.5rem;">🔥 ACTION ITEMS:</h4>
+                        <ul style="list-style: none;">
+                            <li style="margin-bottom: 0.5rem;">[ ] Secure your .com (avoid .net or .biz)</li>
+                            <li style="margin-bottom: 0.5rem;">[ ] Apply to the David Allen Capital Partner Program</li>
+                            <li style="margin-bottom: 0.5rem;">[ ] Set up your Moonshine Notion Dashboard</li>
+                        </ul>
+                    </div>
+                </div>
+            </main>
+
+            <aside class="curriculum-sidebar">
+                <h4 style="margin-bottom: 1.5rem;">Course Progress</h4>
+                <div class="lesson-link active"><span>01</span> 24-Hour Agency Setup</div>
+                <div class="lesson-link"><span>02</span> The "Anti-Sales" Script</div>
+                <div class="lesson-link"><span>03</span> Your First 100 Leads</div>
+                <div class="lesson-link"><span>04</span> Submitting Your First Deal</div>
+                <hr style="border: 0; border-top: 1px solid #222; margin: 1.5rem 0;">
+                <p style="font-size: 0.8rem; color: #555;">Next: Scaling to $10k/mo</p>
+                <a href="../membership/index.html" class="btn btn-outline btn-sm" style="width: 100%; margin-top: 1rem;">Unlock Scale Modules</a>
+            </aside>
+        </div>
+    </div>
+</body>
+</html>
