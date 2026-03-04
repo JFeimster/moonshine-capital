@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Academy | Moonshine Capital</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .course-card { position: relative; overflow: hidden; }
+        .progress-bar { height: 4px; background: #333; width: 100%; position: absolute; bottom: 0; left: 0; }
+        .progress-fill { height: 100%; background: var(--accent); width: 0%; } /* Dynamic width */
+        .locked-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; backdrop-filter: blur(2px); opacity: 0; transition: opacity 0.3s; }
+        .course-card:hover .locked-overlay { opacity: 1; }
+        .lock-icon { font-size: 2rem; color: #fff; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">MOONSHINE <span class="text-accent">ACADEMY</span></div>
+            <a href="../index.html" class="btn-sm">Back to HQ</a>
+        </div>
+    </nav>
+
+    <header class="hero" style="padding: 4rem 0;">
+        <div class="container">
+            <h1>SELECT YOUR <span class="text-accent">PATH</span></h1>
+            <p class="hero-sub">From rookie broker to agency owner. Practical, field-tested training modules.</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container grid-2">
+            
+            <div class="card course-card">
+                <div class="badge">FREE ACCESS</div>
+                <h3>The Rapid Launch Protocol</h3>
+                <p>The 24-hour setup guide. Get your links, build your list, and make your first offer.</p>
+                <ul style="margin: 1.5rem 0; color: #888; font-size: 0.9rem;">
+                    <li>• Module 1: The Mindset of a Broker</li>
+                    <li>• Module 2: Setting up the Tech Stack</li>
+                    <li>• Module 3: Your First 100 Leads</li>
+                </ul>
+                <a href="quick-start.html" class="btn-primary full-width">Start Training</a>
+            </div>
+
+            <div class="card course-card">
+                <div class="badge" style="background: var(--accent); color: #000;">MEMBERS ONLY</div>
+                <h3>The 7-Figure Agency Blueprint</h3>
+                <p>Hiring sub-agents, automating operations, and scaling paid ads.</p>
+                <ul style="margin: 1.5rem 0; color: #888; font-size: 0.9rem;">
+                    <li>• Module 1: Recruitment Automations</li>
+                    <li>• Module 2: Sub-Affiliate Management</li>
+                    <li>• Module 3: Advanced Media Buying</li>
+                </ul>
+                <a href="../mastermind/index.html" class="btn-outline">Unlock Access</a>
+                
+                <div class="locked-overlay">
+                    <div style="text-align: center;">
+                        <div class="lock-icon">🔒</div>
+                        <strong>Requires "Moneymaker" Status</strong>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</body>
+</html>
