@@ -1,4 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('hidden-mobile');
+            navLinks.classList.toggle('mobile-active');
+
+            // Toggle hamburger / close icon
+            if (navLinks.classList.contains('mobile-active')) {
+                menuToggle.textContent = '✕';
+            } else {
+                menuToggle.textContent = '☰';
+            }
+        });
+    }
+
     
     // Smooth Scrolling for anchor links (fallback for older browsers/control)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
