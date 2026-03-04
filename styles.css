@@ -14,13 +14,14 @@
     --border: #2a2a2a;
     --radius: 8px;
     --font-stack: 'Inter', system-ui, -apple-system, sans-serif;
-    --font-mono: 'JetBrains Mono', monospace; /* Added for technical/data look */
+    --font-mono: 'JetBrains Mono', monospace; 
     --section-pad: clamp(4rem, 10vh, 8rem);
     --container-max: 1200px;
     
-    /* Shadows */
+    /* Shadows & Transitions */
     --shadow-sm: 0 4px 12px rgba(0,0,0,0.5);
     --shadow-lg: 0 20px 40px rgba(0,0,0,0.7);
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* --- 2. MODERN RESET & BASE --- */
@@ -32,7 +33,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* Accounts for sticky navbar height */
+    scroll-padding-top: 90px; /* Aligns with sticky navbar */
 }
 
 body {
@@ -50,33 +51,31 @@ body {
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-a { text-decoration: none; color: inherit; transition: 0.25s ease; }
+a { text-decoration: none; color: inherit; transition: var(--transition); }
 ul { list-style: none; }
 img { max-width: 100%; height: auto; display: block; }
-button { font-family: inherit; }
+button { font-family: inherit; transition: var(--transition); }
 
-/* --- 3. UTILITIES --- */
-.container {
-    width: 92%;
-    max-width: var(--container-max);
-    margin: 0 auto;
+/* Accessibility Focus States */
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
 }
 
+/* --- 3. UTILITIES --- */
+.container { width: 92%; max-width: var(--container-max); margin: 0 auto; }
 .narrow-container { max-width: 750px; }
 .text-accent { color: var(--accent); }
 .mono { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 1px; }
 
-.grid-2, .grid-3 {
-    display: grid;
-    gap: 1.5rem;
-}
+.grid-2, .grid-3 { display: grid; gap: 1.5rem; }
 
 @media (min-width: 768px) {
     .grid-2 { grid-template-columns: repeat(2, 1fr); }
     .grid-3 { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* --- 4. ANIMATION STATES (For script.js) --- */
+/* --- 4. ANIMATION STATES (Core Reveal Engine) --- */
 .reveal-hidden {
     opacity: 0;
     transform: translateY(30px);
@@ -103,7 +102,6 @@ button { font-family: inherit; }
     letter-spacing: 0.5px;
     cursor: pointer;
     border: 1px solid transparent;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary {
@@ -129,13 +127,17 @@ button { font-family: inherit; }
     border-color: var(--border);
     width: 100%;
 }
-.btn-outline:hover { border-color: var(--accent); color: var(--accent); background: rgba(255,215,0,0.05); }
+.btn-outline:hover { 
+    border-color: var(--accent); 
+    color: var(--accent); 
+    background: rgba(255,215,0,0.05); 
+}
 
 .btn-sm { padding: 0.6rem 1.2rem; font-size: 0.8rem; background: var(--accent); color: #000; }
 
 /* --- 6. COMPONENTS --- */
 
-/* Navbar */
+/* Navbar with Glassmorphism */
 .navbar {
     padding: 1.2rem 0;
     background: rgba(5, 5, 5, 0.8);
@@ -150,17 +152,21 @@ button { font-family: inherit; }
 .nav-inner { display: flex; justify-content: space-between; align-items: center; }
 .nav-logo { font-weight: 900; font-size: 1.3rem; color: #fff; letter-spacing: -1px; }
 
+.nav-links { display: flex; gap: 1.5rem; align-items: center; }
+
 .nav-link {
     font-size: 0.85rem;
     font-weight: 700;
     text-transform: uppercase;
     color: var(--text-muted);
     letter-spacing: 0.5px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
 }
 .nav-link:hover, .nav-link.active { color: var(--accent); }
-.nav-link.active { border-bottom: 2px solid var(--accent); padding-bottom: 4px; }
+.nav-link.active { border-color: var(--accent); }
 
-/* Hero */
+/* Hero Branding */
 .hero {
     padding: var(--section-pad) 0;
     text-align: center;
@@ -182,13 +188,13 @@ button { font-family: inherit; }
     margin: 0 auto 2.5rem;
 }
 
-/* Cards */
+/* GHL-Inspired Cards */
 .card {
     background: var(--bg-card);
     border: 1px solid var(--border);
     padding: 2.5rem;
     border-radius: var(--radius);
-    transition: all 0.4s ease;
+    transition: var(--transition);
 }
 .card:hover { 
     transform: translateY(-8px); 
@@ -198,7 +204,7 @@ button { font-family: inherit; }
 
 .card h3 { font-size: 1.4rem; margin-bottom: 0.75rem; color: #fff; }
 
-/* Featured Partner */
+/* Featured Partner Card */
 .featured-partner {
     background: linear-gradient(165deg, #1a1a1a, #0a0a0a);
     border: 1px solid var(--accent);
@@ -222,7 +228,7 @@ button { font-family: inherit; }
     text-transform: uppercase;
 }
 
-/* --- 7. MOBILE LOGIC --- */
+/* --- 7. MOBILE LOGIC & MENU OVERLAY --- */
 @media (max-width: 768px) {
     .section { padding: 4rem 0; }
     
@@ -232,6 +238,7 @@ button { font-family: inherit; }
         border: none;
         color: #fff;
         font-size: 1.8rem;
+        z-index: 1001; /* Stays above menu */
     }
 
     .nav-links.hidden-mobile {
@@ -242,19 +249,25 @@ button { font-family: inherit; }
         display: flex;
         flex-direction: column;
         position: fixed;
-        top: 72px;
+        top: 0;
         left: 0;
         width: 100%;
         height: 100vh;
-        background: var(--bg-dark);
-        padding: 3rem 2rem;
+        background: rgba(5, 5, 5, 0.98);
+        backdrop-filter: blur(20px);
+        padding: 8rem 2rem;
         gap: 2.5rem;
         z-index: 999;
         text-align: center;
-        border-top: 1px solid var(--border);
+        animation: fadeIn 0.3s ease;
     }
     
     .nav-links.mobile-active .nav-link {
         font-size: 1.5rem;
     }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
