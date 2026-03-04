@@ -1,1 +1,225 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The War Room | Moonshine Capital's Elite Broker Mastermind.">
+    <title>The War Room | Elite Mastermind</title>
+    
+    <link rel="stylesheet" href="../styles.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* War Room Exclusive Styles */
+        .war-hero {
+            padding: 10rem 0 6rem;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a0000 0%, #050505 80%);
+            border-bottom: 2px solid #300;
+        }
+
+        .prestige-badge {
+            border: 1px solid #600;
+            background: rgba(100, 0, 0, 0.1);
+            color: #ff4444;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+            border: 1px solid #222;
+            background: #0a0a0a;
+            padding: 3rem;
+            border-radius: 8px;
+        }
+
+        .stat-item h4 { font-size: 3rem; color: #fff; line-height: 1; }
+        .stat-item p { font-family: var(--font-mono); color: var(--accent); font-size: 0.75rem; margin-top: 0.5rem; }
+
+        .module-list { margin-top: 3rem; display: grid; gap: 1.5rem; }
+        .module-item { 
+            background: #111; 
+            border: 1px solid #222; 
+            padding: 2rem; 
+            border-radius: 8px; 
+            display: flex; 
+            gap: 2rem;
+            align-items: center;
+        }
+        .module-num { font-size: 2.5rem; font-weight: 900; color: #222; line-height: 1; }
+
+        .application-section {
+            background: #0a0a0a;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 4rem;
+            margin-top: 6rem;
+            text-align: center;
+        }
+
+        .price-reveal {
+            font-size: 1.5rem;
+            color: #888;
+            margin: 2rem 0;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .module-item { flex-direction: column; text-align: center; gap: 1rem; }
+            .application-section { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-inner" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="nav-logo" style="font-weight: 900; font-size: 1.2rem; color: #fff;">MOONSHINE <span style="color: #ff4444;">WAR ROOM</span></div>
+            <div class="nav-links hidden-mobile" style="display: flex; gap: 2rem;">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../membership/" class="nav-link">Membership</a>
+                <a href="../training/" class="nav-link">Academy</a>
+            </div>
+            <a href="#apply" class="btn btn-primary btn-sm" style="background: #ff4444; border-color: #ff4444;">Apply For Seat</a>
+        </div>
+    </nav>
+
+    <header class="war-hero">
+        <div class="container">
+            <div class="prestige-badge">RESTRICTED ACCESS: 12 SEATS REMAINING</div>
+            <h1 style="font-size: clamp(3rem, 7vw, 5rem); letter-spacing: -3px; margin-bottom: 2rem;">THE <span style="color: #ff4444;">WAR ROOM</span></h1>
+            <p style="color: #aaa; font-size: 1.4rem; max-width: 800px; margin: 0 auto; line-height: 1.6;">
+                The high-stakes inner circle for elite funding brokers. Direct access to our deal floor, our proprietary lead co-op, and the underwriting power of Moonshine Capital.
+            </p>
+            
+            <div class="stat-grid">
+                <div class="stat-item"><h4>$25M+</h4><p>TOTAL FUNDED BY MEMBERS</p></div>
+                <div class="stat-item"><h4>8%</h4><p>AVG. COMMISSION PER DEAL</p></div>
+                <div class="stat-item"><h4>24H</h4><p>MAX DEAL UNDERWRITE TIME</p></div>
+            </div>
+
+            <a href="#apply" class="btn btn-primary" style="background: #ff4444; border-color: #ff4444; padding: 1.5rem 3rem;">Submit Application</a>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <span class="mono text-accent">Who This Is For</span>
+                <h2 style="margin-top: 1rem;">This Is Not A Classroom.</h2>
+                <p style="color: #888; max-width: 650px; margin: 0 auto;">We don't teach you how to set up a domain here. We teach you how to dominate a market. You must meet these criteria to be considered:</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="card" style="border-color: #400;">
+                    <h3 style="color: #ff4444; margin-bottom: 1rem;">The Hunter</h3>
+                    <p>You have already funded at least 5 deals and understand the mechanics of the market. You are tired of being a "solopreneur" and want the support of a real institution.</p>
+                </div>
+                <div class="card" style="border-color: #400;">
+                    <h3 style="color: #ff4444; margin-bottom: 1rem;">The Scale-Up</h3>
+                    <p>You have a small team or the capital to hire one. You need the SOPs, recruitment funnels, and management systems to scale to $100k/mo in revenue.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: #080808;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <span class="mono text-accent">Operational Advantages</span>
+                <h2>Member Privileges</h2>
+            </div>
+
+            <div class="module-list">
+                <div class="module-item">
+                    <div class="module-num">01</div>
+                    <div>
+                        <h4 style="color: #fff; font-size: 1.4rem;">The "Live" Deal Desk</h4>
+                        <p style="color: #888;">Direct access to our underwriting channel. Drop a bank statement, get a preliminary offer in 60 minutes. No more waiting on lender portals.</p>
+                    </div>
+                </div>
+                <div class="module-item">
+                    <div class="module-num">02</div>
+                    <div>
+                        <h4 style="color: #fff; font-size: 1.4rem;">Private Lead Co-Op</h4>
+                        <p style="color: #888;">We buy massive datasets of UCC filings and bank-declined leads. Members get first-pass access to fresh data before it hits the open market.</p>
+                    </div>
+                </div>
+                <div class="module-item">
+                    <div class="module-num">03</div>
+                    <div>
+                        <h4 style="color: #fff; font-size: 1.4rem;">White-Label Floor</h4>
+                        <p style="color: #888;">We provide the "Institutional Appearance." Use our high-end marketing decks, credibility kits, and legal docs as if you had a 50-person office in Manhattan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="apply">
+        <div class="container">
+            <div class="application-section">
+                <span class="mono" style="color: #ff4444;">Phase 1: Induction</span>
+                <h2 style="font-size: 3rem; margin: 1.5rem 0;">Are You Ready To Step Into The Light?</h2>
+                <p style="color: #888; max-width: 600px; margin: 0 auto 2rem;">
+                    The War Room is an investment. It is not cheap, and it is not for everyone. We take a limited number of partners to ensure our deal floor can handle the volume.
+                </p>
+                
+                <div class="price-reveal">
+                    Investment: $5,000 / Quarter <br>
+                    <span style="font-size: 0.9rem; color: #444; font-style: normal;">(Or Performance-Based for 7-Figure Agencies)</span>
+                </div>
+
+                <a href="https://tally.so/r/mOe658" target="_blank" class="btn btn-primary" style="background: #ff4444; border-color: #ff4444; font-size: 1.2rem; padding: 1.5rem 4rem;">Start Your Application</a>
+                
+                <p style="margin-top: 2rem; font-size: 0.8rem; color: #444;">
+                    *Application fee of $100 applies to filter out time-wasters. Deducted from total if accepted.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="section" style="background: #020202; border-top: 1px solid #111; padding: 4rem 0;">
+        <div class="container grid-3">
+            <div>
+                <div class="nav-logo" style="margin-bottom: 1rem; color: #ff4444;">THE WAR ROOM</div>
+                <p class="text-muted" style="font-size: 0.9rem;">The final evolution of the funding agent. Join the circle of winners.</p>
+            </div>
+            <div>
+                <h4 class="mono text-accent" style="margin-bottom: 1.5rem;">The Ecosystem</h4>
+                <ul style="display: grid; gap: 0.5rem; font-size: 0.9rem;">
+                    <li><a href="../shop/">The Shop</a></li>
+                    <li><a href="../membership/">Moonshine OS</a></li>
+                    <li><a href="../training/">Academy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="mono text-accent" style="margin-bottom: 1.5rem;">Access</h4>
+                <ul style="display: grid; gap: 0.5rem; font-size: 0.9rem;">
+                    <li><a href="../services/agency-setup.html">DFY Setup</a></li>
+                    <li><a href="../index.html#arsenal">Affiliate Partners</a></li>
+                    <li><a href="../content/">Intel Hub</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container" style="margin-top: 4rem; text-align: center; border-top: 1px solid #111; padding-top: 2rem;">
+            <p class="text-muted" style="font-size: 0.75rem;">© 2026 Moonshine Capital Mastermind. By Application Only.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
