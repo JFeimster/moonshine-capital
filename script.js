@@ -1,16 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // Smooth Scrolling for anchor links (fallback for older browsers/control)
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.innerText = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+    }
+    const currentPath = window.location.pathname;
+    const allLinks = document.querySelectorAll('.nav-link');
+    allLinks.forEach(link => {
+        if (currentPath.includes(link.getAttribute('href').replace('..', ''))) {
+            link.style.color = 'var(--accent)';
+            link.style.borderBottom = '2px solid var(--accent)';
+        }
+    });
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
@@ -32,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Apply animation classes
     const animatedElements = document.querySelectorAll('.card, .hero-content, .featured-partner, .list-item');
-    
+
     animatedElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
