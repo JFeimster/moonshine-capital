@@ -1,61 +1,72 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-    // Mobile menu toggle
+    
+    /**
+     * 1. MOBILE MENU TOGGLE
+     * Handles the transition between hamburger and close icons.
+     */
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.querySelector('.nav-links');
 
     if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('hidden-mobile');
-            navLinks.classList.toggle('mobile-active');
-
-            // Toggle hamburger / close icon
-            if (navLinks.classList.contains('mobile-active')) {
-                menuToggle.textContent = '✕';
-            } else {
-                menuToggle.textContent = '☰';
-            }
+            const isActive = navLinks.classList.toggle('mobile-active');
+            navLinks.classList.toggle('hidden-mobile', !isActive);
+            
+            // Toggle icon and Accessibility state
+            menuToggle.textContent = isActive ? '✕' : '☰';
+            menuToggle.setAttribute('aria-expanded', isActive);
         });
     }
 
-    
-    // Smooth Scrolling for anchor links (fallback for older browsers/control)
+    /**
+     * 2. ACTIVE STATE HIGHLIGHTING
+     * Automatically underlines the link of the page the user is currently on.
+     */
+    const currentPath = window.location.pathname;
+    document.querySelectorAll('.nav-link').forEach(link => {
+        const linkPath = link.getAttribute('href').replace('..', '').replace('.', '');
+        if (currentPath === linkPath || (linkPath !== '/' && currentPath.includes(linkPath))) {
+            link.classList.add('active');
+        }
+    });
+
+    /**
+     * 3. SMOOTH SCROLLING
+     * Fallback for anchor links to ensure consistent behavior across browsers.
+     */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
             const targetId = this.getAttribute('href');
+            if (targetId === '#') return; // Skip empty anchors
+
             const targetElement = document.querySelector(targetId);
-            
             if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
+                e.preventDefault();
+                targetElement.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
 
-    // Simple Intersection Observer for Fade-in effects
-    const observerOptions = {
-        threshold: 0.1
-    };
+    /**
+     * 4. INTERSECTION OBSERVER (FADE-IN REVEAL)
+     * Detects when elements enter the viewport and triggers the animation.
+     */
+    const observerOptions = { threshold: 0.15 };
 
-    const observer = new IntersectionObserver((entries) => {
+    const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
+                entry.target.classList.add('reveal-visible');
+                revealObserver.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // Apply animation classes
-    const animatedElements = document.querySelectorAll('.card, .hero-content, .featured-partner, .list-item');
+    // Optimized selector: catches all main card and content types
+    const revealElements = document.querySelectorAll('.card, .hero-content, .featured-partner, .list-item, .product-card, .stack-item');
     
-    animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-        observer.observe(el);
+    revealElements.forEach(el => {
+        el.classList.add('reveal-hidden'); // Initialize state
+        revealObserver.observe(el);
     });
 });
