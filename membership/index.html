@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Moonshine OS | The Operating System for Brokers</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .price-card { background: #111; border: 1px solid #333; padding: 2.5rem; border-radius: 8px; position: relative; display: flex; flex-direction: column; }
+        .price-card.popular { border-color: var(--accent); background: #161616; transform: scale(1.05); z-index: 10; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+        .price { font-size: 3rem; font-weight: 800; color: #fff; margin: 1rem 0; }
+        .price span { font-size: 1rem; color: #888; font-weight: 400; }
+        .features-list { margin: 2rem 0; flex-grow: 1; }
+        .features-list li { margin-bottom: 1rem; display: flex; align-items: center; color: #ccc; }
+        .check { color: var(--accent); margin-right: 10px; font-weight: bold; }
+        .badge-pop { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #000; padding: 0.3rem 1rem; font-weight: bold; text-transform: uppercase; border-radius: 20px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">MOONSHINE <span class="text-accent">OS</span></div>
+            <a href="../index.html" class="btn-sm">Back to HQ</a>
+        </div>
+    </nav>
+
+    <header class="hero" style="padding: 5rem 0 2rem;">
+        <div class="container">
+            <h1>THE BROKER <span class="text-accent">OPERATING SYSTEM</span></h1>
+            <p class="hero-sub">The exact tech stack, automations, and data feeds I use to run a 7-figure agency. Plug and play.</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 2rem; color: #888;">
+                <span style="color: #fff;">Monthly</span> / Annual (Save 20%)
+            </div>
+
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>The Scout</h3>
+                    <p class="text-muted">For side-hustlers just starting.</p>
+                    <div class="price">$47<span>/mo</span></div>
+                    <ul class="features-list">
+                        <li><span class="check">✓</span> The "Moonshine" Notion Dashboard</li>
+                        <li><span class="check">✓</span> 50 Verified Leads / Month</li>
+                        <li><span class="check">✓</span> Contract Templates</li>
+                        <li><span class="check">✓</span> Community Access</li>
+                    </ul>
+                    <a href="#" class="btn-outline">Start Trial</a>
+                </div>
+
+                <div class="price-card popular">
+                    <div class="badge-pop">Most Popular</div>
+                    <h3>The Rainmaker</h3>
+                    <p class="text-muted">For agents scaling to $10k/mo.</p>
+                    <div class="price">$97<span>/mo</span></div>
+                    <ul class="features-list">
+                        <li><span class="check">✓</span> <strong>Everything in Scout</strong></li>
+                        <li><span class="check">✓</span> GHL Snapshot (One-Click Install)</li>
+                        <li><span class="check">✓</span> 200 Verified Leads / Month</li>
+                        <li><span class="check">✓</span> Weekly "Deal Desk" Calls</li>
+                        <li><span class="check">✓</span> White-Label Marketing Assets</li>
+                    </ul>
+                    <a href="#" class="btn-primary">Get Access</a>
+                </div>
+
+                <div class="price-card">
+                    <h3>The Whitelabel</h3>
+                    <p class="text-muted">We process your files for you.</p>
+                    <div class="price">$297<span>/mo</span></div>
+                    <ul class="features-list">
+                        <li><span class="check">✓</span> <strong>Everything in Rainmaker</strong></li>
+                        <li><span class="check">✓</span> Dedicated Processing Team</li>
+                        <li><span class="check">✓</span> Custom Domain Setup</li>
+                        <li><span class="check">✓</span> 1-on-1 Strategy Call</li>
+                    </ul>
+                    <a href="#" class="btn-outline">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
