@@ -2,67 +2,231 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>DFY Launch | Moonshine Capital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Done-For-You Agency Setup. We build your business funding infrastructure so you can focus on closing deals.">
+    <title>DFY Agency Launch | Moonshine Capital Forge</title>
+    
     <link rel="stylesheet" href="../styles.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
-        .service-layout { display: flex; flex-wrap: wrap; gap: 4rem; align-items: center; }
-        .service-text { flex: 1; min-width: 300px; }
-        .service-visual { flex: 1; min-width: 300px; background: #222; height: 400px; border-radius: 12px; border: 1px solid #333; position: relative; } /* Placeholder for a diagram/screenshot */
-        .step-list { margin-top: 2rem; border-left: 1px solid #333; padding-left: 2rem; }
-        .step-item { position: relative; margin-bottom: 2rem; }
-        .step-item::before { content: ''; position: absolute; left: -2.35rem; top: 5px; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; }
-        .step-title { color: #fff; font-weight: bold; margin-bottom: 0.5rem; display: block; }
+        /* DFY Specific Layouts */
+        .service-layout { display: flex; flex-wrap: wrap; gap: 4rem; align-items: flex-start; margin-bottom: 4rem; }
+        .service-text { flex: 1; min-width: 320px; }
+        .service-visual { 
+            flex: 1; min-width: 320px; background: #0a0a0a; height: 450px; 
+            border-radius: 12px; border: 1px solid #333; position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+        
+        /* Protocol Timeline */
+        .step-list { margin-top: 3rem; border-left: 2px solid #222; padding-left: 2.5rem; }
+        .step-item { position: relative; margin-bottom: 3rem; }
+        .step-item::before { 
+            content: ''; position: absolute; left: -3.05rem; top: 0; 
+            width: 14px; height: 14px; background: var(--accent); 
+            border-radius: 50%; box-shadow: 0 0 10px var(--accent);
+        }
+        .step-title { color: #fff; font-weight: 800; margin-bottom: 0.5rem; display: block; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Pricing Matrix */
+        .pricing-matrix { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 4rem; }
+        .tier-card { 
+            background: #111; border: 1px solid #333; padding: 3rem; border-radius: 8px; 
+            display: flex; flex-direction: column; transition: transform 0.3s ease;
+        }
+        .tier-card:hover { transform: translateY(-10px); border-color: var(--accent); }
+        .tier-card.featured { border: 2px solid var(--accent); background: #161616; position: relative; }
+        .price-tag { font-size: 3.5rem; font-weight: 900; color: #fff; margin: 1.5rem 0; }
+        .price-tag span { font-size: 1rem; color: #666; font-weight: 400; }
+        
+        /* Booking Section */
+        .booking-container { 
+            background: #0a0a0a; border: 1px solid #222; border-radius: 12px; 
+            overflow: hidden; margin-top: 5rem; display: grid; grid-template-columns: 1fr 1fr;
+        }
+        .booking-info { padding: 4rem; }
+        .calendar-embed { background: #111; min-height: 600px; display: flex; align-items: center; justify-content: center; border-left: 1px solid #222; }
+        
+        @media (max-width: 992px) {
+            .booking-container { grid-template-columns: 1fr; }
+            .calendar-embed { border-left: none; border-top: 1px solid #222; }
+        }
     </style>
 </head>
 <body>
+
     <nav class="navbar">
-        <div class="container nav-container">
-            <div class="logo">MOONSHINE <span class="text-accent">DFY</span></div>
-            <a href="../index.html" class="btn-sm">Back</a>
+        <div class="container nav-inner" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="nav-logo" style="font-weight: 900; font-size: 1.2rem; color: #fff;">MOONSHINE <span class="text-accent">FORGE</span></div>
+            <div class="nav-links hidden-mobile" style="display: flex; gap: 2rem;">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../shop/" class="nav-link">The Shop</a>
+                <a href="../membership/" class="nav-link">The OS</a>
+                <a href="../training/" class="nav-link">Academy</a>
+            </div>
+            <a href="#booking" class="btn btn-primary btn-sm">Book Launch Call</a>
         </div>
     </nav>
 
-    <header class="hero" style="padding: 5rem 0;">
-        <div class="container narrow-container">
-            <span class="badge">DONE FOR YOU SERVICE</span>
-            <h1>WE BUILD. YOU SELL.<br><span class="text-accent">ZERO TECH REQUIRED.</span></h1>
-            <p class="hero-sub">Skip the learning curve. We build your website, set up your CRM, configure your email domains, and load your first 500 leads.</p>
-            <a href="#booking" class="btn-primary">Book Your Build Call</a>
+    <header class="hero" style="padding: 8rem 0 4rem; text-align: center;">
+        <div class="container">
+            <span class="badge" style="background: #111; color: #FFD700; padding: 0.5rem 1.2rem; border-radius: 50px; font-weight: 700; font-size: 0.8rem; letter-spacing: 2px;">ELITE DFY SERVICES</span>
+            <h1 style="margin-top: 1.5rem;">WE BUILD THE MACHINE.<br><span class="text-accent">YOU JUST TURN THE KEY.</span></h1>
+            <p class="hero-sub" style="max-width: 750px; margin: 1.5rem auto 3rem; font-size: 1.3rem; color: #888;">Stop wasting months on tech configuration. We deploy your entire funding infrastructure—site, CRM, and leads—in under 7 days.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <a href="#pricing" class="btn btn-primary">View Packages</a>
+                <a href="#booking" class="btn btn-outline">Schedule Strategy Call</a>
+            </div>
         </div>
     </header>
 
     <section class="section">
         <div class="container service-layout">
             <div class="service-text">
-                <h2>The "Turnkey" Protocol</h2>
-                <p>Most agents fail because they spend 3 months playing IT guy instead of selling money. We fix that.</p>
+                <span class="mono text-accent">Deployment Timeline</span>
+                <h2 style="margin-top: 1rem;">The 7-Day "Forge" Protocol</h2>
+                <p style="color: #888; margin-bottom: 2rem;">Most agents burn out because they spend 90% of their time on IT instead of income-producing activities. We handle the heavy lifting.</p>
                 
                 <div class="step-list">
                     <div class="step-item">
-                        <span class="step-title">Day 1: Domain & Brand Identity</span>
-                        <p class="text-muted">We secure your .com and setup professional email (Google Workspace) so you stay out of spam folders.</p>
+                        <span class="step-title">Day 1: Command Center Setup</span>
+                        <p class="text-muted">Domain registration, Google Workspace configuration, and professional email warm-up to ensure 99% inbox delivery.</p>
                     </div>
                     <div class="step-item">
-                        <span class="step-title">Day 3: The Conversion Funnel</span>
-                        <p class="text-muted">We deploy this exact website structure to your domain, hooked up to your affiliate links.</p>
+                        <span class="step-title">Day 3: The Frontline Funnel</span>
+                        <p class="text-muted">Deployment of your optimized agency website, pre-loaded with your DAC, ROK, and 7-Figures affiliate integrations.</p>
                     </div>
                     <div class="step-item">
-                        <span class="step-title">Day 5: The Automation Engine</span>
-                        <p class="text-muted">We install our custom CRM snapshot. Automated follow-ups, calendar booking, and text blasts.</p>
+                        <span class="step-title">Day 5: Automation Engine</span>
+                        <p class="text-muted">Installation of our proprietary GHL Snapshot. SMS drips, email sequences, and pipeline stages fully configured.</p>
                     </div>
                     <div class="step-item">
-                        <span class="step-title">Day 7: Launch</span>
-                        <p class="text-muted">We load 500 verified business leads into your dialer. You just hit "Call".</p>
+                        <span class="step-title">Day 7: Intelligence Loading</span>
+                        <p class="text-muted">We inject 500 verified B2B leads into your dialer. You wake up on Day 8 with a loaded weapon.</p>
                     </div>
                 </div>
             </div>
             
             <div class="service-visual">
-                <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #555; font-weight: bold;">
-                    [ DIAGRAM: THE TECH STACK ]
+                <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; text-align: center;">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">🏗️</div>
+                    <h3 style="color: #fff;">System Architecture</h3>
+                    <p style="color: #444; font-family: monospace; font-size: 0.8rem; margin-top: 1rem;">[ SITE ] <-> [ CRM ] <-> [ LEADS ] <-> [ COMMISSIONS ]</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <section class="section" id="pricing" style="background: #080808;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <span class="mono text-accent">Tiered Access</span>
+                <h2>Choose Your Firepower</h2>
+            </div>
+
+            <div class="pricing-matrix">
+                <div class="tier-card">
+                    <h3>The Foundation</h3>
+                    <p class="text-muted">Perfect for the solo-agent who needs a professional presence and a working CRM.</p>
+                    <div class="price-tag">$3,500<span>One-Time</span></div>
+                    <ul class="features-list" style="margin: 2rem 0; flex-grow: 1;">
+                        <li><span class="check">✓</span> Custom Agency Website Build</li>
+                        <li><span class="check">✓</span> GHL Automation Snapshot Setup</li>
+                        <li><span class="check">✓</span> Professional Email & Domain Config</li>
+                        <li><span class="check">✓</span> 500 Verified Business Leads</li>
+                        <li><span class="check">✓</span> 30 Days Tech Support</li>
+                    </ul>
+                    <a href="#booking" class="btn btn-outline">Book Foundation Build</a>
+                </div>
+
+                <div class="tier-card featured">
+                    <div class="badge-pop">Most Scalable</div>
+                    <h3>The Scale-Up</h3>
+                    <p class="text-muted">For agents ready to build a team and dominate their niche with paid traffic.</p>
+                    <div class="price-tag">$5,000<span>One-Time</span></div>
+                    <ul class="features-list" style="margin: 2rem 0; flex-grow: 1;">
+                        <li><span class="check">✓</span> <strong>Everything in Foundation</strong></li>
+                        <li><span class="check">✓</span> <strong>Sub-Agent Recruitment Funnel</strong></li>
+                        <li><span class="check">✓</span> Automated Agent Onboarding System</li>
+                        <li><span class="check">✓</span> 1,000 Verified Leads (instead of 500)</li>
+                        <li><span class="check">✓</span> Meta/Google Ads Management (30 Days)</li>
+                    </ul>
+                    <a href="#booking" class="btn btn-primary">Book Scale-Up Build</a>
+                </div>
+
+                <div class="tier-card">
+                    <h3>The Partner</h3>
+                    <p class="text-muted">Our Whitelabel "Done-With-You" model. We process your files; you focus on the hunt.</p>
+                    <div class="price-tag">Invite<span>Only</span></div>
+                    <ul class="features-list" style="margin: 2rem 0; flex-grow: 1;">
+                        <li><span class="check">✓</span> Dedicated Underwriting Team</li>
+                        <li><span class="check">✓</span> Custom White-Label Portal</li>
+                        <li><span class="check">✓</span> 50/50 Commission Split on Processed Deals</li>
+                        <li><span class="check">✓</span> High-Volume Lead API Access</li>
+                    </ul>
+                    <a href="#booking" class="btn btn-outline">Apply for Partnership</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="booking">
+        <div class="container">
+            <div class="booking-container">
+                <div class="booking-info">
+                    <span class="mono text-accent">Final Step</span>
+                    <h2 style="margin-top: 1rem;">Secure Your Build Date</h2>
+                    <p style="color: #888; margin-top: 1.5rem; line-height: 1.8;">
+                        We only take on **3 new builds per week** to ensure every agency is launched with 100% precision. On this call, we will audit your current goals and confirm which niche (Construction, Medical, etc.) we will build your funnel for.
+                    </p>
+                    <ul style="margin-top: 2.5rem; color: #fff; font-weight: 600;">
+                        <li style="margin-bottom: 1rem;">⚡ 30-Minute Strategy & Scope Session</li>
+                        <li style="margin-bottom: 1rem;">⚡ Exact Niche Selection & Lead Verification</li>
+                        <li style="margin-bottom: 1rem;">⚡ Tech Audit & Integration Planning</li>
+                    </ul>
+                </div>
+                <div class="calendar-embed">
+                    <div style="text-align: center; color: #444;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📅</div>
+                        <p class="mono">[ CALENDAR EMBED LOADED HERE ]</p>
+                        <p style="font-size: 0.8rem; margin-top: 1rem;">(Calendly / GHL Widget)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="section" style="background: #020202; border-top: 1px solid #111; padding: 4rem 0;">
+        <div class="container grid-3">
+            <div>
+                <div class="nav-logo" style="margin-bottom: 1rem;">MOONSHINE CAPITAL</div>
+                <p class="text-muted" style="font-size: 0.9rem;">Building high-performance funding agencies for the next generation of brokers.</p>
+            </div>
+            <div>
+                <h4 class="mono text-accent" style="margin-bottom: 1.5rem;">Infrastructure</h4>
+                <ul style="display: grid; gap: 0.5rem; font-size: 0.9rem;">
+                    <li><a href="../shop/">The Shop</a></li>
+                    <li><a href="../membership/">Moonshine OS</a></li>
+                    <li><a href="../training/">Academy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="mono text-accent" style="margin-bottom: 1.5rem;">Contact</h4>
+                <ul style="display: grid; gap: 0.5rem; font-size: 0.9rem;">
+                    <li><a href="#booking">Book Strategy Call</a></li>
+                    <li><a href="../developers/">API & Dev Portal</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container" style="margin-top: 4rem; text-align: center; border-top: 1px solid #111; padding-top: 2rem;">
+            <p class="text-muted" style="font-size: 0.75rem;">© 2026 Moonshine Capital Forge. Results require effort. We build the tool; you swing it.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
 </body>
 </html>
