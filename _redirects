@@ -7,16 +7,16 @@
 /partner                /join/                                  301
 /partners               /join/                                  301
 /onboarding             /join/thank-you                         302
-/videos                 /academy/videos                         301
+/videos                 /training/videos                        301
 /intel                  /content/                               301
 /war-room               /mastermind/                            301
 /armory                 /shop/                                  301
 /os                     /membership/                            301
 
-# Legacy aliases
+# Legacy Academy / Video Vault aliases
 /academy                /training/                              301
-/training/videos        /academy/videos                         301
-/training/videos.html   /academy/videos                         301
+/academy/videos         /training/videos                        301
+/academy/videos.html    /training/videos                        301
 
 # Deep article shortcuts
 /intel/the-closer-script        /content/articles/the-closer-script       301
