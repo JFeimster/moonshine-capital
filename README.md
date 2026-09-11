@@ -2,6 +2,8 @@
 
 A high-performance, static landing page for recruiting business funding agents and sub-affiliates. 
 
+**GitHub Pages:** https://jfeimster.github.io/moonshine-capital/
+
 ## Features
 - **Zero Dependencies:** Pure HTML/CSS/JS. No frameworks to update or break.
 - **Dark Mode Aesthetic:** Optimized for authority and high-ticket offers.
