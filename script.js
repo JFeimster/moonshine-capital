@@ -1,5 +1,89 @@
 document.addEventListener('DOMContentLoaded', () => {
     /**
+     * 0. SHARED PARTNER NAV STYLES
+     * Kept in the shared script so every static page receives the same submenu
+     * without duplicating markup or page-level CSS.
+     */
+    if (!document.getElementById('partner-nav-styles')) {
+        const navStyles = document.createElement('style');
+        navStyles.id = 'partner-nav-styles';
+        navStyles.textContent = `
+            .nav-dropdown { position: relative; display: flex; align-items: center; }
+            .nav-dropdown-trigger { display: flex; align-items: center; gap: .2rem; }
+            .nav-dropdown-toggle { background: none; border: 0; color: var(--text-muted); cursor: pointer; font-size: .85rem; line-height: 1; padding: .25rem; }
+            .nav-dropdown:hover .nav-dropdown-toggle,
+            .nav-dropdown.open .nav-dropdown-toggle { color: var(--accent); transform: rotate(180deg); }
+            .nav-dropdown-menu {
+                position: absolute;
+                top: calc(100% + 1rem);
+                left: 0;
+                min-width: 280px;
+                display: grid;
+                gap: .2rem;
+                padding: .65rem;
+                background: rgba(10, 10, 10, .98);
+                border: 1px solid var(--border);
+                border-radius: var(--radius);
+                box-shadow: var(--shadow-lg);
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-8px);
+                transition: var(--transition);
+                z-index: 1200;
+            }
+            .nav-dropdown:hover .nav-dropdown-menu,
+            .nav-dropdown.open .nav-dropdown-menu,
+            .nav-dropdown:focus-within .nav-dropdown-menu {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            .nav-sub-link {
+                display: block;
+                padding: .7rem .85rem;
+                border-radius: 6px;
+                color: var(--text-muted);
+                font-size: .78rem;
+                font-weight: 700;
+                line-height: 1.25;
+                text-transform: uppercase;
+                letter-spacing: .35px;
+                white-space: nowrap;
+            }
+            .nav-sub-link:hover,
+            .nav-sub-link.active {
+                background: rgba(255, 215, 0, .08);
+                color: var(--accent);
+            }
+            @media (max-width: 768px) {
+                .nav-links.mobile-active { overflow-y: auto; justify-content: flex-start; gap: 1.45rem; }
+                .nav-links.mobile-active .nav-dropdown { width: min(92vw, 420px); display: block; }
+                .nav-links.mobile-active .nav-dropdown-trigger { justify-content: center; }
+                .nav-links.mobile-active .nav-dropdown-toggle { font-size: 1.15rem; }
+                .nav-links.mobile-active .nav-dropdown-menu {
+                    position: static;
+                    min-width: 0;
+                    width: 100%;
+                    margin-top: .8rem;
+                    opacity: 1;
+                    visibility: visible;
+                    transform: none;
+                    box-shadow: none;
+                    background: #0b0b0b;
+                    border-color: #242424;
+                    display: grid;
+                }
+                .nav-links.mobile-active .nav-sub-link {
+                    font-size: .9rem;
+                    padding: .8rem 1rem;
+                    white-space: normal;
+                }
+            }
+        `;
+        document.head.appendChild(navStyles);
+    }
+
+    /**
      * 1. PARTNER NAVIGATION DROPDOWN
      * Promote the existing Partners link into a sitewide submenu without
      * requiring every static HTML page to duplicate the same markup.
