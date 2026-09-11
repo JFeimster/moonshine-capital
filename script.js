@@ -1,12 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
     /**
-     * 0. SHARED PARTNER NAV STYLES
-     * Kept in the shared script so every static page receives the same submenu
-     * without duplicating markup or page-level CSS.
+     * 0. NORMALIZE LEGACY VIDEO VAULT LINKS
+     * Keep older static markup working while making /training/videos canonical.
      */
-    if (!document.getElementById('partner-nav-styles')) {
+    document.querySelectorAll('a[href]').forEach(link => {
+        const href = link.getAttribute('href');
+        if (!href) return;
+
+        if (
+            href.includes('academy/videos.html') ||
+            href === '/academy/videos' ||
+            href === '/academy/videos.html'
+        ) {
+            link.setAttribute('href', '/training/videos');
+        }
+    });
+
+    /**
+     * 1. SHARED DROPDOWN STYLES
+     */
+    if (!document.getElementById('global-nav-dropdown-styles')) {
         const navStyles = document.createElement('style');
-        navStyles.id = 'partner-nav-styles';
+        navStyles.id = 'global-nav-dropdown-styles';
         navStyles.textContent = `
             .nav-dropdown { position: relative; display: flex; align-items: center; }
             .nav-dropdown-trigger { display: flex; align-items: center; gap: .2rem; }
@@ -83,56 +98,44 @@ document.addEventListener('DOMContentLoaded', () => {
         document.head.appendChild(navStyles);
     }
 
-    /**
-     * 1. PARTNER NAVIGATION DROPDOWN
-     * Promote the existing Partners link into a sitewide submenu without
-     * requiring every static HTML page to duplicate the same markup.
-     */
     const navLinks = document.querySelector('.nav-links');
-    const partnerLink = navLinks
-        ? Array.from(navLinks.querySelectorAll(':scope > .nav-link')).find(link => link.textContent.trim().toLowerCase() === 'partners')
-        : null;
 
-    if (partnerLink && !navLinks.querySelector('.nav-dropdown')) {
+    const createDropdown = ({ parentLink, ariaLabel, items }) => {
+        if (!navLinks || !parentLink) return null;
+
         const dropdown = document.createElement('div');
         dropdown.className = 'nav-dropdown';
 
         const trigger = document.createElement('div');
         trigger.className = 'nav-dropdown-trigger';
 
-        partnerLink.classList.add('nav-dropdown-link');
-        partnerLink.setAttribute('aria-haspopup', 'true');
-        partnerLink.setAttribute('aria-expanded', 'false');
+        parentLink.classList.add('nav-dropdown-link');
+        parentLink.setAttribute('aria-haspopup', 'true');
+        parentLink.setAttribute('aria-expanded', 'false');
 
         const chevron = document.createElement('button');
         chevron.type = 'button';
         chevron.className = 'nav-dropdown-toggle';
-        chevron.setAttribute('aria-label', 'Show partner pages');
+        chevron.setAttribute('aria-label', ariaLabel);
         chevron.setAttribute('aria-expanded', 'false');
         chevron.textContent = '▾';
 
         const menu = document.createElement('div');
         menu.className = 'nav-dropdown-menu';
         menu.setAttribute('role', 'menu');
-        menu.innerHTML = `
-            <a href="/join/" class="nav-sub-link" role="menuitem">Partner Program</a>
-            <a href="/partners/second-opinion/" class="nav-sub-link" role="menuitem">Second-Opinion Desk</a>
-            <a href="/partners/equipment/" class="nav-sub-link" role="menuitem">Equipment Financing</a>
-            <a href="/partners/sub-brokers/" class="nav-sub-link" role="menuitem">Sub-Broker Program</a>
-            <a href="/partners/advisors/" class="nav-sub-link" role="menuitem">CPA & Advisor Desk</a>
-            <a href="/partners/dealers/" class="nav-sub-link" role="menuitem">Dealer Financing</a>
-            <a href="/partners/real-estate/" class="nav-sub-link" role="menuitem">Real Estate Bridge Desk</a>
-        `;
+        menu.innerHTML = items.map(item =>
+            `<a href="${item.href}" class="nav-sub-link" role="menuitem">${item.label}</a>`
+        ).join('');
 
-        partnerLink.parentNode.insertBefore(dropdown, partnerLink);
-        trigger.appendChild(partnerLink);
+        parentLink.parentNode.insertBefore(dropdown, parentLink);
+        trigger.appendChild(parentLink);
         trigger.appendChild(chevron);
         dropdown.appendChild(trigger);
         dropdown.appendChild(menu);
 
         const setDropdownOpen = (open) => {
             dropdown.classList.toggle('open', open);
-            partnerLink.setAttribute('aria-expanded', String(open));
+            parentLink.setAttribute('aria-expanded', String(open));
             chevron.setAttribute('aria-expanded', String(open));
         };
 
@@ -150,6 +153,45 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('click', (event) => {
             if (!dropdown.contains(event.target)) setDropdownOpen(false);
         });
+
+        return dropdown;
+    };
+
+    if (navLinks) {
+        const directLinks = Array.from(navLinks.querySelectorAll(':scope > .nav-link'));
+        const partnerLink = directLinks.find(link => link.textContent.trim().toLowerCase() === 'partners');
+        const academyLink = directLinks.find(link => link.textContent.trim().toLowerCase() === 'academy');
+        const videoVaultLink = directLinks.find(link => link.textContent.trim().toLowerCase() === 'video vault');
+
+        // Video Vault is now an Academy child, never a top-level header item.
+        if (videoVaultLink) videoVaultLink.remove();
+
+        if (partnerLink) {
+            createDropdown({
+                parentLink: partnerLink,
+                ariaLabel: 'Show partner pages',
+                items: [
+                    { href: '/join/', label: 'Partner Program' },
+                    { href: '/partners/second-opinion/', label: 'Second-Opinion Desk' },
+                    { href: '/partners/equipment/', label: 'Equipment Financing' },
+                    { href: '/partners/sub-brokers/', label: 'Sub-Broker Program' },
+                    { href: '/partners/advisors/', label: 'CPA & Advisor Desk' },
+                    { href: '/partners/dealers/', label: 'Dealer Financing' },
+                    { href: '/partners/real-estate/', label: 'Real Estate Bridge Desk' }
+                ]
+            });
+        }
+
+        if (academyLink) {
+            createDropdown({
+                parentLink: academyLink,
+                ariaLabel: 'Show Academy pages',
+                items: [
+                    { href: '/training/', label: 'Academy Overview' },
+                    { href: '/training/videos', label: 'Video Vault' }
+                ]
+            });
+        }
     }
 
     /**
@@ -171,6 +213,9 @@ document.addEventListener('DOMContentLoaded', () => {
      * 3. ACTIVE STATE HIGHLIGHTING
      */
     const currentPath = window.location.pathname;
+    const normalizedPath = currentPath.endsWith('/index.html')
+        ? currentPath.replace(/index\.html$/, '')
+        : currentPath;
 
     document.querySelectorAll('.nav-link, .nav-sub-link').forEach(link => {
         const rawHref = link.getAttribute('href');
@@ -178,9 +223,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const cleanHref = rawHref.replace(/^(\.\.\/|\.\/)/, '');
         const normalizedHref = cleanHref.startsWith('/') ? cleanHref : '/' + cleanHref;
-        const normalizedPath = currentPath.endsWith('/index.html')
-            ? currentPath.replace(/index\.html$/, '')
-            : currentPath;
 
         if (
             cleanHref &&
@@ -193,8 +235,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    if (currentPath.startsWith('/partners/')) {
-        document.querySelector('.nav-dropdown-link')?.classList.add('active');
+    if (normalizedPath.startsWith('/partners/')) {
+        Array.from(document.querySelectorAll('.nav-dropdown-link')).find(link =>
+            link.textContent.trim().toLowerCase() === 'partners'
+        )?.classList.add('active');
+    }
+
+    if (normalizedPath.startsWith('/training/')) {
+        Array.from(document.querySelectorAll('.nav-dropdown-link')).find(link =>
+            link.textContent.trim().toLowerCase() === 'academy'
+        )?.classList.add('active');
     }
 
     /**
