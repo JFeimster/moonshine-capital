@@ -6,130 +6,15 @@
     <title>7-Figure Agency Blueprint | Moonshine Academy</title>
     <link rel="stylesheet" href="../styles.css">
     <style>
-        .lock-container {
-            max-width: 800px;
-            margin: 6rem auto;
-            text-align: center;
-            background: linear-gradient(180deg, #111 0%, #050505 100%);
-            padding: 5rem 2rem;
-            border: 1px solid #222;
-            border-radius: 12px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .lock-container::before {
-            content: 'RESTRICTED';
-            position: absolute;
-            top: 20px;
-            left: -30px;
-            background: var(--accent);
-            color: #000;
-            padding: 5px 40px;
-            font-weight: 900;
-            font-size: 0.7rem;
-            transform: rotate(-45deg);
-        }
-
-        .lock-shield {
-            font-size: 5rem;
-            color: var(--accent);
-            margin-bottom: 2rem;
-            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.2));
-        }
-
-        .module-preview {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 4rem;
-            opacity: 0.2;
-            filter: blur(4px);
-            pointer-events: none;
-            user-select: none;
-        }
-
-        .preview-card {
-            background: #111;
-            padding: 1.5rem;
-            border: 1px solid #333;
-            border-radius: 6px;
-            text-align: left;
-        }
+        .lock-container { max-width: 800px; margin: 6rem auto; text-align: center; background: linear-gradient(180deg, #111 0%, #050505 100%); padding: 5rem 2rem; border: 1px solid #222; border-radius: 12px; position: relative; overflow: hidden; }
+        .lock-container::before { content: 'RESTRICTED'; position: absolute; top: 20px; left: -30px; background: var(--accent); color: #000; padding: 5px 40px; font-weight: 900; font-size: 0.7rem; transform: rotate(-45deg); }
+        .lock-shield { font-size: 5rem; color: var(--accent); margin-bottom: 2rem; filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.2)); }
+        .module-preview { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 4rem; opacity: 0.2; filter: blur(4px); pointer-events: none; user-select: none; }
+        .preview-card { background: #111; padding: 1.5rem; border: 1px solid #333; border-radius: 6px; text-align: left; }
     </style>
 </head>
 <body>
-
-    <nav class="navbar">
-        <div class="container nav-inner">
-            <a href="../index.html" class="nav-logo">MOONSHINE ACADEMY</a>
-            <a href="index.html" class="btn btn-outline btn-sm">← Back</a>
-        </div>
-    </nav>
-
-    <div class="container">
-        <div class="lock-container">
-            <div class="lock-shield">🔒</div>
-            <h1 style="margin-bottom: 1.5rem;">CLASSIFIED ACCESS</h1>
-            <p style="color: #888; font-size: 1.2rem; line-height: 1.6; margin-bottom: 2.5rem;">
-                The **7-Figure Agency Blueprint** is reserved exclusively for Moonshine OS members. This is the institutional-grade curriculum for brokers scaling from individual hunters to agency owners.
-            </p>
-            
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="../membership/index.html" class="btn btn-primary">Upgrade to Moonshine OS</a>
-                <a href="quick-start.html" class="btn btn-outline">Back to Free Training</a>
-            </div>
-
-            <div class="module-preview">
-                <div class="preview-card">
-                    <span class="mono text-accent">M4</span>
-                    <h4>Automated Recruitment</h4>
-                    <p>Building a 50-agent downline on autopilot.</p>
-                </div>
-                <div class="preview-card">
-                    <span class="mono text-accent">M5</span>
-                    <h4>Media Buying for Loans</h4>
-                    <p>Scaling Meta & Google ads at a 5x ROAS.</p>
-                </div>
-                <div class="preview-card">
-                    <span class="mono text-accent">M6</span>
-                    <h4>Whitelabel Ops</h4>
-                    <p>Hiring your first dedicated underwriter.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-<footer class="section" style="background: #020202; border-top: 1px solid var(--border); padding: 4rem 0;">
-    <div class="container grid-3">
-        <div>
-            <div class="nav-logo" style="margin-bottom: 1rem;">MOONSHINE CAPITAL</div>
-            <p class="text-muted" style="font-size: 0.9rem;">Empowering the next generation of funding assassins. High margin. Low fluff. Zero corporate gatekeeping.</p>
-        </div>
-        <div>
-            <h4 class="mono text-accent" style="margin-bottom: 1.5rem;">Navigation</h4>
-            <ul style="display: grid; gap: 0.5rem; font-size: 0.9rem;">
-                <li><a href="../shop/index.html">The Armory (Shop)</a></li>
-                <li><a href="../membership/index.html">The OS (Membership)</a></li>
-                <li><a href="../training/index.html">The Academy</a></li>
-                <li><a href="../content/index.html">Field Intel</a></li>
-            </ul>
-        </div>
-        <div>
-            <h4 class="mono text-accent" style="margin-bottom: 1.5rem;">Scale</h4>
-            <ul style="display: grid; gap: 0.5rem; font-size: 0.9rem;">
-                <li><a href="../services/agency-setup.html">DFY Agency Setup</a></li>
-                <li><a href="../mastermind/index.html">The War Room</a></li>
-                <li><a href="../index.html#arsenal">Partner Program</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="container" style="margin-top: 4rem; text-align: center; border-top: 1px solid #111; padding-top: 2rem;">
-        <p class="text-muted" style="font-size: 0.75rem;">© 2026 Moonshine Capital. Built for Funding Assassins.</p>
-    </div>
-</footer>
-
-    <script src="../script.js"></script>
-</body>
-</html>
+    <nav class="navbar"><div class="container nav-inner"><a href="../index.html" class="nav-logo">MOONSHINE <span class="text-accent">CAPITAL</span></a><div class="nav-links hidden-mobile"><a href="../join/" class="nav-link">Partners</a><a href="../shop/" class="nav-link">Shop</a><a href="../membership/" class="nav-link">Membership</a><a href="../training/" class="nav-link">Academy</a><a href="../academy/videos.html" class="nav-link">Video Vault</a><a href="../content/" class="nav-link">Intel</a><a href="../services/agency-setup.html" class="nav-link">DFY</a></div><div style="display: flex; gap: 1rem; align-items: center;"><a href="../mastermind/" class="btn btn-primary btn-sm">The War Room</a><button class="mobile-toggle mobile-only" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button></div></div></nav>
+    <div class="container"><div class="lock-container"><div class="lock-shield">🔒</div><h1 style="margin-bottom: 1.5rem;">CLASSIFIED ACCESS</h1><p style="color: #888; font-size: 1.2rem; line-height: 1.6; margin-bottom: 2.5rem;">The **7-Figure Agency Blueprint** is reserved exclusively for Moonshine OS members. This is the institutional-grade curriculum for brokers scaling from individual hunters to agency owners.</p><div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;"><a href="../membership/" class="btn btn-primary">Upgrade to Moonshine OS</a><a href="quick-start.html" class="btn btn-outline">Back to Free Training</a></div><div class="module-preview"><div class="preview-card"><span class="mono text-accent">M4</span><h4>Automated Recruitment</h4><p>Building a 50-agent downline on autopilot.</p></div><div class="preview-card"><span class="mono text-accent">M5</span><h4>Media Buying for Loans</h4><p>Scaling Meta & Google ads at a 5x ROAS.</p></div><div class="preview-card"><span class="mono text-accent">M6</span><h4>Whitelabel Ops</h4><p>Hiring your first dedicated underwriter.</p></div></div></div></div>
+<footer class="section" style="background: #020202; border-top: 1px solid var(--border); padding: 4rem 0;"><div class="container grid-3"><div><div class="nav-logo" style="margin-bottom: 1rem;">MOONSHINE CAPITAL</div><p class="text-muted" style="font-size: 0.9rem;">Empowering the next generation of funding assassins. High margin. Low fluff. Zero corporate gatekeeping.</p></div><div><h4 class="mono text-accent" style="margin-bottom: 1.5rem;">Infrastructure</h4><ul style="display: grid; gap: 0.5rem; font-size: 0.9rem;"><li><a href="../shop/">The Armory (Shop)</a></li><li><a href="../membership/">The OS (Membership)</a></li><li><a href="../training/">The Academy</a></li><li><a href="../academy/videos.html">Video Vault</a></li><li><a href="../content/">Field Intel</a></li></ul></div><div><h4 class="mono text-accent" style="margin-bottom: 1.5rem;">Scale & Ops</h4><ul style="display: grid; gap: 0.5rem; font-size: 0.9rem;"><li><a href="../join/">Partner Application</a></li><li><a href="../services/agency-setup.html">DFY Agency Setup</a></li><li><a href="../mastermind/">The War Room</a></li><li><a href="https://www.distilledfunding.com/courses" target="_blank" rel="noopener noreferrer">Distilled Funding LMS ↗</a></li></ul></div></div><div class="container" style="margin-top: 4rem; text-align: center; border-top: 1px solid #111; padding-top: 2rem;"><p class="text-muted" style="font-size: 0.75rem;">© 2026 Moonshine Capital. All rights reserved.</p></div></footer>
+<script src="../script.js"></script></body></html>
