@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Commercial Equipment Financing & Lease-to-Own Estimator. Application-only approvals up to $250k on soft credit pulls.">
+    <title>Commercial Equipment Financing &amp; Lease Desk | Moonshine Capital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+    <script src="https://tally.so/widgets/embed.js"></script>
+    <style>
+        .calc-box { background: #0d0d0d; border: 1px solid var(--accent); border-radius: 12px; padding: 2.5rem; margin: 3rem 0; box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1); }
+        .calc-slider { width: 100%; margin: 1.5rem 0; accent-color: var(--accent); }
+        .step-rail { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin: 3rem 0; counter-reset: eq-c; }
+        .step-card { background: #0d0d0d; border: 1px solid var(--border); border-radius: 8px; padding: 2rem; position: relative; }
+        .step-card::before { counter-increment: eq-c; content: "0" counter(eq-c); font-family: var(--font-mono); font-size: 2rem; font-weight: 900; color: #222; position: absolute; top: 1rem; right: 1.25rem; }
+        .tally-intake-wrapper { background: #090909; border: 2px solid var(--accent); border-radius: 12px; padding: 3rem 1.5rem; margin: 5rem 0; }
+        .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 1.5rem; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="../../index.html" class="nav-logo">MOONSHINE <span class="text-accent">CAPITAL</span></a>
+            <div class="nav-links hidden-mobile">
+                <a href="../../join/" class="nav-link">Partners</a>
+                <a href="../../shop/" class="nav-link">Shop</a>
+                <a href="../../membership/" class="nav-link">Membership</a>
+                <a href="../../training/" class="nav-link">Academy</a>
+                <a href="../../academy/videos.html" class="nav-link">Video Vault</a>
+                <a href="../../content/" class="nav-link">Intel</a>
+                <a href="../../services/agency-setup.html" class="nav-link">DFY</a>
+            </div>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <a href="#pre-qual" class="btn btn-primary btn-sm">Finance Equipment</a>
+                <button class="mobile-toggle mobile-only" id="menuToggle" aria-label="Toggle navigation">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero" style="padding: 5rem 0 3.5rem; border-bottom: 1px solid var(--border);">
+        <div class="container">
+            <span class="badge">ASSET-BACKED COMMERCIAL DESK</span>
+            <h1 style="font-size: clamp(2.3rem, 5.5vw, 4.2rem); font-weight: 900; margin: 1rem 0;">FINANCE HEAVY MACHINERY &amp; VEHICLES <br><span class="text-accent">WITHOUT TYING UP WORKING CAPITAL.</span></h1>
+            <p style="color: var(--text-muted); max-width: 720px; margin: 0 auto 2.5rem; font-size: 1.15rem;">Application-only approvals up to $250,000 on soft credit pulls. Acquire essential revenue-generating equipment with zero strain on cash reserves.</p>
+            <div class="btn-group"><a href="#estimator" class="btn btn-primary">Calculate Lease Payment</a><a href="#pre-qual" class="btn btn-secondary">Submit Quote for Approval</a></div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="estimator" class="calc-box">
+            <div style="text-align: center; margin-bottom: 2rem;"><span class="mono text-accent" style="font-size: 0.8rem;">ESTIMATED PAYMENT ENGINE</span><h2 style="font-size: 2rem; color: #fff; margin-top: 0.25rem;">Interactive Lease Payment Estimator</h2><p class="text-muted">Adjust equipment invoice cost to view estimated monthly commitments across 36, 48, and 60-month terms.</p></div>
+            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <label for="eqAmount" style="font-family: var(--font-mono); font-size: 1.1rem; color: #fff;">Equipment Cost: <span id="amountDisplay" class="text-accent" style="font-weight: 900;">$100,000</span></label>
+                <input type="range" id="eqAmount" class="calc-slider" min="10000" max="500000" step="5000" value="100000" oninput="updateEstimate(this.value)">
+                <div class="grid-3" style="margin-top: 2rem;">
+                    <div style="background: #000; padding: 1.5rem; border: 1px solid var(--border); border-radius: 6px;"><span class="mono" style="color: #777; font-size: 0.75rem;">36-MONTH TERM</span><h4 id="term36" class="text-accent" style="font-size: 1.4rem; margin-top: 0.5rem;">$3,200/mo</h4></div>
+                    <div style="background: #000; padding: 1.5rem; border: 1px solid var(--accent); border-radius: 6px;"><span class="mono" style="color: #fff; font-size: 0.75rem;">48-MONTH TERM (POPULAR)</span><h4 id="term48" class="text-accent" style="font-size: 1.4rem; margin-top: 0.5rem;">$2,500/mo</h4></div>
+                    <div style="background: #000; padding: 1.5rem; border: 1px solid var(--border); border-radius: 6px;"><span class="mono" style="color: #777; font-size: 0.75rem;">60-MONTH TERM</span><h4 id="term60" class="text-accent" style="font-size: 1.4rem; margin-top: 0.5rem;">$2,100/mo</h4></div>
+                </div>
+                <p style="font-size: 0.75rem; color: #555; margin-top: 1.5rem;">*Estimates assume standard tier-1 credit rating and average depreciation schedule. Actual rates depend on equipment age and borrower cash flow.</p>
+            </div>
+        </section>
+
+        <section class="section"><div class="section-header"><span class="badge">SUPPORTED ASSETS</span><h2>EQUIPMENT WE FINANCE ACROSS NORTH AMERICA</h2></div><div class="grid-3"><div class="card"><h3 class="text-accent">Construction &amp; Excavation</h3><p class="text-muted">Bulldozers, excavators, skid steers, asphalt rollers, and heavy vocational equipment trailers.</p></div><div class="card"><h3 class="text-accent">Commercial Transportation</h3><p class="text-muted">Class 8 semi-tractors, refrigerated trailers, box trucks, dump trucks, and specialized wreckers.</p></div><div class="card"><h3 class="text-accent">Industrial &amp; Fabrication</h3><p class="text-muted">CNC machinery, laser cutters, commercial packaging lines, injection molding, and warehouse forklifts.</p></div></div></section>
+
+        <section class="section"><div class="section-header"><span class="badge">FINANCIAL ADVANTAGES</span><h2>KEEP YOUR BALANCE SHEET LIQUID</h2></div><div class="grid-3"><div class="card"><span class="mono text-accent">TAX DEDUCTIONS</span><h3 style="color:#fff; margin: 0.5rem 0;">Section 179 Accelerated</h3><p class="text-muted">Write off up to 100% of the qualifying equipment purchase price within the current tax year.</p></div><div class="card"><span class="mono text-accent">ZERO DOWN OPTIONS</span><h3 style="color:#fff; margin: 0.5rem 0;">100% Invoice Coverage</h3><p class="text-muted">Structure freight, installation, tooling, and warranty costs directly into the lease schedule.</p></div><div class="card"><span class="mono text-accent">FLEXIBLE BUYOUTS</span><h3 style="color:#fff; margin: 0.5rem 0;">$1 Buyout or FMV</h3><p class="text-muted">Own the asset outright for one dollar at lease expiration or trade it in for modern replacements.</p></div></div></section>
+
+        <section class="section"><div class="section-header"><span class="badge">UNDERWRITING PATH</span><h2>3 STEPS TO EQUIPMENT RELEASE</h2></div><div class="step-rail"><div class="step-card"><h4 class="text-accent">Step 1: Upload Quote</h4><p class="text-muted">Provide dealer equipment invoice/quote and 3 months of business checking bank statements.</p></div><div class="step-card"><h4 class="text-accent">Step 2: Digital Term Sign-Off</h4><p class="text-muted">Review payment schedule, sign electronic lease documentation, and confirm asset delivery address.</p></div><div class="step-card"><h4 class="text-accent">Step 3: Direct Dealer Wire</h4><p class="text-muted">Lender wires the full invoice amount directly to the equipment seller; you take possession.</p></div></div></section>
+
+        <section class="section"><div class="section-header"><span class="badge">LEASING STRUCTURES</span><h2>AVAILABLE ASSET FINANCING INSTRUMENTS</h2></div><div class="grid-2"><div class="card"><h3 style="color:#fff;">Capital Leases ($1 Buyout)</h3><p class="text-muted">Ideal for long-life machinery you intend to keep for 10+ years. Complete asset ownership transfer upon final payment.</p></div><div class="card"><h3 style="color:#fff;">Operating Leases &amp; Sale-Leasebacks</h3><p class="text-muted">Lower monthly commitment with fair market value expiration terms, or sell existing paid-off machinery to inject quick liquidity.</p></div></div></section>
+
+        <section class="section"><div class="section-header"><span class="badge">CASE BRIEFS</span><h2>MACHINERY RECENTLY FUNDED</h2></div><div class="grid-3"><div class="card"><strong class="text-accent">[CIVIL UTILITIES]</strong><br>• Equipment: 2023 Komatsu PC210 ($185,000)<br>• Terms: 48-Month $1 Buyout Lease<br>• Time to Funding: 48 Hours to Dealer Wire.</div><div class="card"><strong class="text-accent">[LONG-HAUL FREIGHT]</strong><br>• Equipment: (2) 2021 Peterbilt 579 Sleeper Tractors ($150,000)<br>• Terms: 36-Month Capital Lease<br>• Time to Funding: 36 Hours on Cash Flow.</div><div class="card"><strong class="text-accent">[PRECISION MACHINING]</strong><br>• Equipment: Haas VF-4SS CNC Mill ($84,000)<br>• Terms: 60-Month FMV Lease with 10% Buyout<br>• Time to Funding: Application-only approved in 24 hours.</div></div></section>
+
+        <section class="section"><div class="section-header"><span class="badge">APPROVAL PARAMETERS</span><h2>APPLICATION-ONLY CREDIT BRACKETS</h2></div><div class="card narrow-container" style="margin: 0 auto; text-align: center;"><h3 style="color:#fff; font-size: 1.8rem; margin-bottom: 1rem;">Up to $250k Application-Only</h3><p class="text-muted" style="margin-bottom: 1.5rem;">No personal tax returns or P&amp;L audit required for equipment invoices under $250,000. Larger facilities up to $2,000,000 available through structured middle-market underwriting.</p><a href="#pre-qual" class="btn btn-primary">Start Pre-Qualification</a></div></section>
+
+        <section class="section"><div class="section-header"><span class="badge">ANSWERS</span><h2>EQUIPMENT FINANCING FAQS</h2></div><div class="narrow-container" style="margin: 0 auto;"><div class="faq-item"><h4 style="color:#fff;">Can I finance private party equipment sales?</h4><p class="text-muted">Yes. Third-party independent inspections and clean title verifications are executed prior to direct wire release.</p></div><div class="faq-item"><h4 style="color:#fff;">What age equipment qualifies?</h4><p class="text-muted">Most facilities finance equipment up to 10–12 years old. Specialty heavy machinery can be older if hours and mechanical condition verify.</p></div><div class="faq-item"><h4 style="color:#fff;">Can startups or new LLCs qualify?</h4><p class="text-muted">Yes, startups with strong personal guarantor credit (680+) or existing down payments can qualify for asset-backed leases.</p></div></div></section>
+
+        <section class="tally-intake-wrapper" id="pre-qual"><div class="section-header" style="margin-bottom: 2rem;"><span class="badge">SECURE PORTAL</span><h2 style="font-size: clamp(2rem, 4.5vw, 3rem);">SUBMIT YOUR EQUIPMENT INVOICE</h2><p style="color: #aaa; max-width: 600px; margin: 0 auto;">Attach your dealer quote or equipment details below to receive preliminary lease terms within 24 hours.</p></div><div style="max-width: 760px; margin: 0 auto; background: #000; border: 1px solid var(--border); border-radius: 8px; padding: 1rem;"><iframe data-tally-src="https://tally.so/embed/rjM6do?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1" loading="lazy" width="100%" height="818" frameborder="0" marginheight="0" marginwidth="0" title="Equipment Financing Application"></iframe></div></section>
+    </main>
+
+    <footer class="section" style="background: #020202; border-top: 1px solid var(--border); padding: 4rem 0;"><div class="container grid-3"><div><div class="nav-logo" style="margin-bottom: 1rem;">MOONSHINE CAPITAL</div><p class="text-muted" style="font-size: 0.9rem;">Empowering the next generation of funding assassins. High margin. Low fluff. Zero corporate gatekeeping.</p></div><div><h4 class="mono text-accent" style="margin-bottom: 1.5rem;">Infrastructure</h4><ul style="display: grid; gap: 0.5rem; font-size: 0.9rem;"><li><a href="../../shop/">The Armory (Shop)</a></li><li><a href="../../membership/">The OS (Membership)</a></li><li><a href="../../training/">The Academy</a></li><li><a href="../../academy/videos.html">Video Vault</a></li><li><a href="../../content/">Field Intel</a></li></ul></div><div><h4 class="mono text-accent" style="margin-bottom: 1.5rem;">Scale &amp; Ops</h4><ul style="display: grid; gap: 0.5rem; font-size: 0.9rem;"><li><a href="../../join/">Partner Application</a></li><li><a href="../../services/agency-setup.html">DFY Agency Setup</a></li><li><a href="../../mastermind/">The War Room</a></li><li><a href="https://www.distilledfunding.com/courses" target="_blank" rel="noopener noreferrer">Distilled Funding LMS ↗</a></li></ul></div></div><div class="container" style="margin-top: 4rem; text-align: center; border-top: 1px solid #111; padding-top: 2rem;"><p class="text-muted" style="font-size: 0.75rem;">© 2026 Moonshine Capital. Commercial Machinery Division.</p></div></footer>
+    <script>function updateEstimate(val) { document.getElementById('amountDisplay').innerText = '$' + Number(val).toLocaleString(); document.getElementById('term36').innerText = '$' + Math.round(val * 0.032).toLocaleString() + '/mo'; document.getElementById('term48').innerText = '$' + Math.round(val * 0.025).toLocaleString() + '/mo'; document.getElementById('term60').innerText = '$' + Math.round(val * 0.021).toLocaleString() + '/mo'; } document.addEventListener('DOMContentLoaded', () => { if (typeof Tally !== 'undefined') Tally.loadEmbeds(); });</script>
+    <script src="../../script.js"></script>
+</body>
+</html>
