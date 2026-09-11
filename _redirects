@@ -1,0 +1,27 @@
+# ==============================================================================
+# Moonshine Capital — Cloudflare Pages Canonical Routing & Redirects
+# ==============================================================================
+
+# Primary shortlinks & funnel aliases
+/apply                  /join/                                  301
+/partner                /join/                                  301
+/partners               /join/                                  301
+/onboarding             /join/thank-you                         302
+/videos                 /academy/videos                         301
+/intel                  /content/                               301
+/war-room               /mastermind/                            301
+/armory                 /shop/                                  301
+/os                     /membership/                            301
+
+# Legacy aliases
+/academy                /training/                              301
+/training/videos        /academy/videos                         301
+/training/videos.html   /academy/videos                         301
+
+# Deep article shortcuts
+/intel/the-closer-script        /content/articles/the-closer-script       301
+/intel/death-of-the-local-bank  /content/articles/template                301
+
+# External training fallbacks
+/courses                https://www.distilledfunding.com/courses         302
+/lms                    https://www.distilledfunding.com/courses         302
