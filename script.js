@@ -22,8 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     const currentPath = window.location.pathname;
     document.querySelectorAll('.nav-link').forEach(link => {
-        const linkPath = link.getAttribute('href').replace('..', '').replace('.', '');
-        if (currentPath === linkPath || (linkPath !== '/' && currentPath.includes(linkPath))) {
+        const rawHref = link.getAttribute('href');
+        if (!rawHref) return;
+
+        // Normalize path by stripping relative markers while preserving folder/file names.
+        const cleanHref = rawHref.replace(/^(\.\.\/|\.\/)/, '');
+
+        if (cleanHref && (currentPath.endsWith(cleanHref) || currentPath.includes('/' + cleanHref))) {
             link.classList.add('active');
         }
     });
