@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .nav-dropdown.open .nav-dropdown-toggle { color: var(--accent); transform: rotate(180deg); }
             .nav-dropdown-menu {
                 position: absolute;
-                top: calc(100% + 1rem);
+                top: 100%;
                 left: 0;
                 min-width: 280px;
                 display: grid;
