@@ -4,6 +4,7 @@ A high-performance, static landing page for recruiting business funding agents a
 
 - **Cloudfare Pages:** https://moonshine-capital.pages.dev/
 - **GitHub Pages:** https://jfeimster.github.io/moonshine-capital/
+- **Vercel:** https://moonshine-capital.vercel.app/
 
 ## Features
 - **Zero Dependencies:** Pure HTML/CSS/JS. No frameworks to update or break.
