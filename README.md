@@ -1,3 +1,5 @@
+<img width="1594" height="564" alt="Image" src="https://github.com/user-attachments/assets/d70050ee-05d5-45d7-8aef-e6d95ca04baf" />
+
 # Moonshine Capital - Affiliate Hub
 
 A high-performance, static landing page for recruiting business funding agents and sub-affiliates. 
